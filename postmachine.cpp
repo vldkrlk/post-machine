@@ -53,7 +53,7 @@ QVector<Command> PostMachine::getCommands() const
     return m_commands;
 }
 
-Tape PostMachine::getTape() const
+const Tape &PostMachine::getTape() const
 {
     return m_tape;
 }

@@ -14,7 +14,7 @@ public:
 
     size_t getCommandIndex() const;
     QVector<Command> getCommands() const;
-    Tape getTape() const;
+    const Tape &getTape() const;
 
     void setCommandIndex(size_t index);
     void setCommands(const QVector<Command> &commands);

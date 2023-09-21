@@ -13,9 +13,10 @@ public:
     explicit TapeWidget(QWidget *parent = nullptr);
 
     void loadFromTape(const Tape &tape);
+    virtual void paintEvent(QPaintEvent *event);
 
 private:
-    QTableWidget *m_tablewidget;
+    Tape m_tape;
 };
 
 #endif

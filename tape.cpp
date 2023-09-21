@@ -7,12 +7,12 @@ Tape::Tape()
 
 void Tape::setValue(index_t index, bool value)
 {
-    m_vector[index - 500] = value;
+    m_vector[index + 500] = value;
 }
 
 bool Tape::getValue(index_t index) const
 {
-    return m_vector[index - 500];
+    return m_vector[index + 500];
 }
 
 void Tape::setHead(index_t head)
