@@ -12,6 +12,11 @@ const Tape &PostMachineModel::getTape() const
     return m_core.getTape();
 }
 
+QVector<Command> PostMachineModel::getCommands() const
+{
+    return m_core.getCommands();
+}
+
 void PostMachineModel::setTape(const Tape &tape)
 {
     m_core.setTape(tape);

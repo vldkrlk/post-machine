@@ -13,6 +13,8 @@ void TapeWidget::paintEvent(QPaintEvent *event)
     auto cell_width = 40;
     auto cell_height = size().height() / 2.1;
     auto cells = size().width() / cell_width;
+    if (cells % 2 == 0)
+        cells--;
     auto vstep = (size().width() - cells * cell_width) / 2.0;
     auto middle = cells / 2;
 
@@ -28,4 +30,9 @@ void TapeWidget::paintEvent(QPaintEvent *event)
                          cell_width / 2,
                          QString::number(i - middle + m_tape.getHead()));
     }
+}
+
+void TapeWidget::loadFromTape(const Tape &tape)
+{
+    m_tape = tape;
 }

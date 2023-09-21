@@ -12,7 +12,7 @@ public:
 
     bool isRunning() const;
     const Tape &getTape() const;
-    const QVector<Command> &getCommands() const;
+    QVector<Command> getCommands() const;
 
     void setTape(const Tape &);
     void setCommands(const QVector<Command> &commands);

@@ -17,7 +17,7 @@ public:
     PostMachineView(QWidget *parent = nullptr);
     ~PostMachineView();
 
-    void loadDataFromModel(const PostMachineModel *model);
+    void loadDataFromModel(const PostMachineModel &model);
 
 private:
     Ui::PostMachineView *ui;
