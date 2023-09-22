@@ -1,6 +1,7 @@
 #ifndef TAPEWIDGET_HPP
 #define TAPEWIDGET_HPP
 
+#include <QMouseEvent>
 #include <QTableWidget>
 #include <QWidget>
 
@@ -14,6 +15,9 @@ public:
 
     void loadFromTape(const Tape &tape);
     virtual void paintEvent(QPaintEvent *event);
+    virtual void mouseDoubleClickEvent(QMouseEvent *event);
+signals:
+    void ValueChanged(Tape::index_t index);
 
 private:
     Tape m_tape;

@@ -1,3 +1,4 @@
+#include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
 #include "postmachineview.hpp"
 
@@ -5,11 +6,16 @@
 
 int main(int argc, char *argv[])
 {
-    PostMachineModel model;
-    model.setCommands({Command("hi", "0,4"), Command("<", "0,3")});
     QApplication a(argc, argv);
-    PostMachineView w;
-    w.loadDataFromModel(model);
-    w.show();
+
+    PostMachineModel *model = new PostMachineModel();
+    model->setCommands({Command("hi", "0,4"), Command("<", "0,3")});
+
+    PostMachineController *controller = new PostMachineController(model);
+
+    PostMachineView *view = new PostMachineView(controller);
+    view->loadDataFromModel(*model);
+
+    view->show();
     return a.exec();
 }

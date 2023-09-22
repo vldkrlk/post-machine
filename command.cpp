@@ -20,12 +20,19 @@ Command::Command(QString command, QString jumps)
     else
         m_type = Invalid;
 
+    bool ok = false;
     if (jumps.contains(',')) {
         auto vectors = jumps.split(QString(","));
-        m_jump1 = vectors[0].toInt();
-        m_jump2 = vectors[1].toInt();
+        m_jump1 = vectors[0].toInt(&ok);
+        if (!ok)
+            m_jump1 = kinvalid_jump;
+        m_jump2 = vectors[1].toInt(&ok);
+        if (!ok)
+            m_jump2 = kinvalid_jump;
     } else {
-        m_jump1 = jumps.toInt();
+        m_jump1 = jumps.toInt(&ok);
+        if (!ok)
+            m_jump1 = kinvalid_jump;
     }
 }
 

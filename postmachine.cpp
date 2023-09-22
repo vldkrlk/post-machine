@@ -48,12 +48,22 @@ size_t PostMachine::getCommandIndex() const
     return m_command_index;
 }
 
-QVector<Command> PostMachine::getCommands() const
+const QVector<Command> &PostMachine::getCommands() const
+{
+    return m_commands;
+}
+
+QVector<Command> &PostMachine::getCommands()
 {
     return m_commands;
 }
 
 const Tape &PostMachine::getTape() const
+{
+    return m_tape;
+}
+
+Tape &PostMachine::getTape()
 {
     return m_tape;
 }

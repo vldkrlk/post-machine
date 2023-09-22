@@ -12,7 +12,9 @@ public:
 
     bool isRunning() const;
     const Tape &getTape() const;
-    QVector<Command> getCommands() const;
+    Tape &getTape();
+    const QVector<Command> &getCommands() const;
+    QVector<Command> &getCommands();
 
     void setTape(const Tape &);
     void setCommands(const QVector<Command> &commands);
@@ -24,6 +26,7 @@ public:
 
 private:
     PostMachine m_core;
+    bool m_is_working = false;
 };
 
 #endif
