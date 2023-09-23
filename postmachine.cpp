@@ -7,7 +7,7 @@ void PostMachine::nextStep()
     auto &command = m_commands[m_command_index];
     size_t jump = m_command_index + 1;
     if (command.getJump1() != Command::kinvalid_jump)
-        jump = command.getJump1();
+        jump = command.getJump1() - 1;
 
     switch (command.getType()) {
     case Command::MoveLeft:
@@ -23,7 +23,7 @@ void PostMachine::nextStep()
         m_tape.writeOnHead(1);
         break;
     case Command::MoveIF:
-        jump = m_tape.readOnHead() ? command.getJump1() : command.getJump2();
+        jump = m_tape.readOnHead() ? command.getJump1() - 1 : command.getJump2() - 1;
         break;
     case Command::End:
         return;

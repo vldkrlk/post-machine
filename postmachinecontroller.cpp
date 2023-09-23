@@ -15,14 +15,17 @@ void PostMachineController::MoveTapeLeft()
     m_model->moveTape(-1);
 }
 
-void PostMachineController::CommandEntered(size_t index, QString data, QString params)
+void PostMachineController::CommandEntered(size_t index,
+                                           QString data,
+                                           QString params,
+                                           QString comment)
 {
-    m_model->getCommands()[index] = Command(data, params);
+    m_model->getCommands()[index] = Command(data, params, comment);
 }
 
 void PostMachineController::InsertCommand(size_t index)
 {
-    m_model->getCommands().insert(index, Command("", ""));
+    m_model->getCommands().insert(index, Command("", "", ""));
 }
 
 void PostMachineController::DeleteCommand(size_t index)

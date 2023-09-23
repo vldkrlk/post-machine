@@ -9,6 +9,7 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     , controller(controller)
 {
     ui->setupUi(this);
+    ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
     connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
 }
 
@@ -32,15 +33,30 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->step_button->setEnabled(!model.isRunning());
     ui->commands_widget->setEnabled(!model.isRunning());
 
+    if (model.isRunning()) {
+        ui->status_label->setText("Виконується");
+    } else {
+        if (model.isError())
+            ui->status_label->setText("Машина зупинилася через помилку під час виконання");
+        else if (model.isEnd())
+            ui->status_label->setText("Машина зупинилася на команді зупинки");
+        else
+            ui->status_label->setText("Машина очікує команди");
+    }
+
     auto commands = model.getCommands();
 
     ui->commands_widget->setRowCount(commands.size());
     for (int i = 0; i < commands.size(); ++i) {
-        auto command_item = new QTableWidgetItem(commands[i].getCommand());
+        auto command_item = new QTableWidgetItem(commands[i].getCommand()
+                                                 + (i == model.getCommandIndex() ? "  <---" : ""));
         ui->commands_widget->setItem(i, 0, command_item);
         auto jump_item = new QTableWidgetItem(commands[i].getJumps());
         ui->commands_widget->setItem(i, 1, jump_item);
+        auto comment_item = new QTableWidgetItem(commands[i].getComment());
+        ui->commands_widget->setItem(i, 2, comment_item);
     }
+
     m_table_editing = false;
 }
 
@@ -64,8 +80,9 @@ void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
     auto row = item->row();
     auto command = ui->commands_widget->item(row, 0)->text();
     auto argc = ui->commands_widget->item(row, 1)->text();
+    auto comment = ui->commands_widget->item(row, 2)->text();
 
-    controller->CommandEntered(row, command, argc);
+    controller->CommandEntered(row, command, argc, comment);
 
     loadDataFromModel(*controller->GetModel());
 }

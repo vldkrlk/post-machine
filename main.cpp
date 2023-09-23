@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     PostMachineModel *model = new PostMachineModel();
-    model->setCommands({Command("hi", "0,4"), Command("<", "0,3")});
+    model->setCommands({Command("hi", "0,4", "hi"), Command("<", "0,3", "hello")});
 
     PostMachineController *controller = new PostMachineController(model);
 

@@ -2,7 +2,8 @@
 
 #include <QList>
 
-Command::Command(QString command, QString jumps)
+Command::Command(QString command, QString jumps, QString comment)
+    : m_comment(comment)
 {
     auto character = command.simplified();
     if (character == "<")
@@ -21,7 +22,7 @@ Command::Command(QString command, QString jumps)
         m_type = Invalid;
 
     bool ok = false;
-    if (jumps.contains(',')) {
+    if (jumps.contains(',') && m_type == MoveIF) {
         auto vectors = jumps.split(QString(","));
         m_jump1 = vectors[0].toInt(&ok);
         if (!ok)
@@ -82,4 +83,9 @@ QString Command::getJumps()
         }
     }
     return string;
+}
+
+QString Command::getComment()
+{
+    return m_comment;
 }

@@ -11,10 +11,13 @@ public:
     PostMachineModel();
 
     bool isRunning() const;
+    bool isEnd() const;
+    bool isError() const;
     const Tape &getTape() const;
     Tape &getTape();
     const QVector<Command> &getCommands() const;
     QVector<Command> &getCommands();
+    size_t getCommandIndex() const;
 
     void setTape(const Tape &);
     void setCommands(const QVector<Command> &commands);

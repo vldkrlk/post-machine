@@ -7,13 +7,14 @@ TapeWidget::TapeWidget(QWidget *parent) {}
 
 void TapeWidget::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this);
-    painter.setFont(QApplication::font());
-
     auto pallete = this->palette();
 
-    painter.setBrush(pallete.base());
-    painter.setPen(pallete.color(QPalette::WindowText));
+    QColor background_color = pallete.base().color();
+    QColor main_color = pallete.color(QPalette::WindowText);
+    QColor highlight_color = pallete.highlight().color();
+
+    QPainter painter(this);
+    painter.setFont(QApplication::font());
 
     auto cell_width = 40;
     auto cell_height = size().height() / 2.1;
@@ -24,21 +25,27 @@ void TapeWidget::paintEvent(QPaintEvent *event)
     auto middle = cells / 2;
 
     for (int i = 0; i < cells; ++i) {
-        painter.setBrush(pallete.base());
+        painter.setBrush(background_color);
+        painter.setPen(QPen(main_color, 1));
+
         painter.drawRect(vstep + i * cell_width, cell_height, cell_width, cell_height);
 
+        painter.drawText(vstep + i * cell_width + cell_width / 2.6f,
+                         cell_width / 1.3,
+                         QString::number(i - middle + m_tape.getHead()));
+
         if (m_tape.getValue(i - middle + m_tape.getHead())) {
-            painter.setBrush(pallete.shadow());
+            painter.setBrush(highlight_color);
+            painter.setPen(QPen());
             painter.drawEllipse(vstep + i * cell_width + cell_width / 4,
                                 cell_height + cell_height / 4,
                                 cell_width / 2,
                                 cell_height / 2);
         }
-
-        painter.drawText(vstep + i * cell_width + cell_width / 2.6f,
-                         cell_width / 1.3,
-                         QString::number(i - middle + m_tape.getHead()));
     }
+    painter.setPen(QPen(highlight_color, 4));
+    painter.setBrush(Qt::transparent);
+    painter.drawRect(vstep + middle * cell_width, cell_height, cell_width, cell_height);
 }
 
 void TapeWidget::mouseDoubleClickEvent(QMouseEvent *event)

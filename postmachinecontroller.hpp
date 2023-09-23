@@ -10,7 +10,7 @@ public:
 
     void MoveTapeRight();
     void MoveTapeLeft();
-    void CommandEntered(size_t index, QString data, QString params);
+    void CommandEntered(size_t index, QString data, QString params, QString comment);
     void InsertCommand(size_t index);
     void DeleteCommand(size_t index);
     void ChangeTapeValue(Tape::index_t index);
