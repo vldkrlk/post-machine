@@ -11,10 +11,13 @@ public:
     void nextStep();
     void reset();
     bool isEnd() const;
+    bool isError() const;
 
     size_t getCommandIndex() const;
+
     const QVector<Command> &getCommands() const;
     QVector<Command> &getCommands();
+
     const Tape &getTape() const;
     Tape &getTape();
 

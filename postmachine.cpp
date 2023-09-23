@@ -2,6 +2,8 @@
 
 void PostMachine::nextStep()
 {
+    if (m_command_index >= m_commands.size())
+        return;
     auto &command = m_commands[m_command_index];
     size_t jump = m_command_index + 1;
     if (command.getJump1() != Command::kinvalid_jump)
@@ -24,10 +26,9 @@ void PostMachine::nextStep()
         jump = m_tape.readOnHead() ? command.getJump1() : command.getJump2();
         break;
     case Command::End:
-        break;
+        return;
     case Command::Invalid:
-        //TODO
-        break;
+        return;
     }
 
     m_command_index = jump;
@@ -40,7 +41,16 @@ void PostMachine::reset()
 
 bool PostMachine::isEnd() const
 {
+    if (isError())
+        return true;
     return m_commands[m_command_index].getType() == Command::End;
+}
+
+bool PostMachine::isError() const
+{
+    if (m_command_index >= m_commands.size())
+        return true;
+    return m_commands[m_command_index].getType() == Command::Invalid;
 }
 
 size_t PostMachine::getCommandIndex() const
@@ -76,9 +86,11 @@ void PostMachine::setCommandIndex(size_t index)
 void PostMachine::setCommands(const QVector<Command> &commands)
 {
     m_commands = commands;
+    reset();
 }
 
 void PostMachine::setTape(const Tape &tape)
 {
     m_tape = tape;
+    reset();
 }

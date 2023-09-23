@@ -9,10 +9,7 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     , controller(controller)
 {
     ui->setupUi(this);
-    connect(ui->tape_widget,
-            &TapeWidget::ValueChanged,
-            this,
-            &PostMachineView::on_tape_value_changed);
+    connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
 }
 
 PostMachineView::~PostMachineView()
@@ -85,7 +82,7 @@ void PostMachineView::on_remove_button_clicked()
     loadDataFromModel(*controller->GetModel());
 }
 
-void PostMachineView::on_tape_value_changed(Tape::index_t index)
+void PostMachineView::tape_value_changed(Tape::index_t index)
 {
     controller->ChangeTapeValue(index);
     loadDataFromModel(*controller->GetModel());

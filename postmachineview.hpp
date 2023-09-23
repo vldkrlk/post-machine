@@ -34,7 +34,7 @@ private slots:
 
     void on_remove_button_clicked();
 
-    void on_tape_value_changed(Tape::index_t);
+    void tape_value_changed(Tape::index_t);
 
     void on_run_button_clicked();
 
