@@ -20,71 +20,6 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QToolButton" name="new_file_button">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Н</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="load_file_button">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>В</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="save_file_button">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>З</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="save_tape_button">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>ЗС</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="load_tape_button">
-          <property name="minimumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>ВС</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="space_1">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -138,6 +73,22 @@
            <string>N</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Minimum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>60</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
          <widget class="QLabel" name="status_label">
@@ -366,8 +317,19 @@
     <addaction name="instruction_action"/>
     <addaction name="about_action"/>
    </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Швидкість</string>
+    </property>
+    <addaction name="fast_speed_action"/>
+    <addaction name="normal_speed_action"/>
+    <addaction name="slow_speed_action"/>
+    <addaction name="separator"/>
+    <addaction name="custom_speed_action"/>
+   </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
+   <addaction name="menu_4"/>
    <addaction name="menu_3"/>
   </widget>
   <action name="instruction_action">
@@ -403,6 +365,26 @@
   <action name="exit_action">
    <property name="text">
     <string>Вихід</string>
+   </property>
+  </action>
+  <action name="fast_speed_action">
+   <property name="text">
+    <string>Швидко</string>
+   </property>
+  </action>
+  <action name="normal_speed_action">
+   <property name="text">
+    <string>Нормально</string>
+   </property>
+  </action>
+  <action name="slow_speed_action">
+   <property name="text">
+    <string>Повільно</string>
+   </property>
+  </action>
+  <action name="custom_speed_action">
+   <property name="text">
+    <string>Власна швидкість</string>
    </property>
   </action>
  </widget>

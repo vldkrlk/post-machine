@@ -22,3 +22,8 @@ void PostMachineModel::stop()
 {
     m_is_working = false;
 }
+
+int PostMachineModel::getTimerDelay()
+{
+    return m_timer_delay;
+}

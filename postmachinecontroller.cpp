@@ -86,7 +86,15 @@ void PostMachineController::SaveTape(QString url)
     m_model->getTape().saveToFile(url);
 }
 
-void PostMachineController::Timer() {}
+void PostMachineController::Timer()
+{
+    if (m_model->isRunning())
+        m_model->nextStep();
+    if (m_model->isEnd())
+        m_model->stop();
+    if (m_model->isError())
+        m_model->stop();
+}
 
 PostMachineModel *PostMachineController::GetModel() const
 {

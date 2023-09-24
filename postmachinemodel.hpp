@@ -16,8 +16,11 @@ public:
     void run();
     void stop();
 
+    int getTimerDelay();
+
 private:
     bool m_is_working = false;
+    int m_timer_delay = 2000;
 };
 
 #endif

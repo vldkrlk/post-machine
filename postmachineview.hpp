@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTableWidgetItem>
+#include <QTimer>
 
 #include "tapewidget.hpp"
 
@@ -58,6 +59,7 @@ private slots:
 private:
     Ui::PostMachineView *ui;
     PostMachineController *controller;
+    QTimer *m_timer;
     bool m_table_editing = false;
 };
 #endif // POSTMACHINEVIEW_HPP
