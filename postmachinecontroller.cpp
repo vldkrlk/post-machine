@@ -92,8 +92,26 @@ void PostMachineController::Timer()
         m_model->nextStep();
     if (m_model->isEnd())
         m_model->stop();
-    if (m_model->isError())
-        m_model->stop();
+}
+
+void PostMachineController::HighSpeed()
+{
+    m_model->setTimerDelay(100);
+}
+
+void PostMachineController::NormalSpeed()
+{
+    m_model->setTimerDelay(800);
+}
+
+void PostMachineController::LowSpeed()
+{
+    m_model->setTimerDelay(1500);
+}
+
+void PostMachineController::CustomSpeed(int speed)
+{
+    m_model->setTimerDelay(speed);
 }
 
 PostMachineModel *PostMachineController::GetModel() const

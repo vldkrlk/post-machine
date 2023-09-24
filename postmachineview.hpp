@@ -56,6 +56,14 @@ private slots:
 
     void timer();
 
+    void on_fast_speed_action_triggered();
+
+    void on_normal_speed_action_triggered();
+
+    void on_slow_speed_action_triggered();
+
+    void on_custom_speed_action_triggered();
+
 private:
     Ui::PostMachineView *ui;
     PostMachineController *controller;

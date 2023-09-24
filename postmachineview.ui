@@ -44,7 +44,7 @@
            </size>
           </property>
           <property name="text">
-           <string>P</string>
+           <string>Старт</string>
           </property>
          </widget>
         </item>
@@ -57,7 +57,7 @@
            </size>
           </property>
           <property name="text">
-           <string>S</string>
+           <string>Стоп</string>
           </property>
          </widget>
         </item>
@@ -70,7 +70,7 @@
            </size>
           </property>
           <property name="text">
-           <string>N</string>
+           <string>Крок</string>
           </property>
          </widget>
         </item>

@@ -26,6 +26,11 @@ public:
 
     void Timer();
 
+    void HighSpeed();
+    void NormalSpeed();
+    void LowSpeed();
+    void CustomSpeed(int speed);
+
     PostMachineModel *GetModel() const;
 
 private:

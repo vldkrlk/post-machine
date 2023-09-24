@@ -17,6 +17,7 @@ public:
     void stop();
 
     int getTimerDelay();
+    void setTimerDelay(int delay);
 
 private:
     bool m_is_working = false;

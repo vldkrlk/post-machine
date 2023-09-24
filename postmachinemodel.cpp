@@ -27,3 +27,8 @@ int PostMachineModel::getTimerDelay()
 {
     return m_timer_delay;
 }
+
+void PostMachineModel::setTimerDelay(int delay)
+{
+    m_timer_delay = delay;
+}

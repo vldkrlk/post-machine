@@ -1,5 +1,6 @@
 #include "postmachineview.hpp"
 #include <QFileDialog>
+#include <QInputDialog>
 #include <QMessageBox>
 #include "./ui_postmachineview.h"
 #include "postmachinecontroller.hpp"
@@ -12,6 +13,7 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     , m_timer(new QTimer(this))
 {
     ui->setupUi(this);
+    m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
@@ -29,7 +31,6 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     connect(ui->save_tape_action, &QAction::triggered, this, &PostMachineView::save_tape);
 
     connect(m_timer, &QTimer::timeout, this, &PostMachineView::timer);
-    m_timer->start(controller->GetModel()->getTimerDelay());
 }
 
 PostMachineView::~PostMachineView()
@@ -56,7 +57,10 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
         ui->status_label->setText("Виконується");
     } else {
         if (model.isError())
-            ui->status_label->setText("Машина зупинилася через помилку під час виконання");
+            if (model.getCommandIndex() != 0)
+                ui->status_label->setText("Машина зупинилася через помилку під час виконання");
+            else
+                ui->status_label->setText("");
         else if (model.isEnd())
             ui->status_label->setText("Машина зупинилася на команді зупинки");
         else
@@ -127,6 +131,7 @@ void PostMachineView::tape_value_changed(Tape::index_t index)
 void PostMachineView::on_run_button_clicked()
 {
     controller->Start();
+    m_timer->start(controller->GetModel()->getTimerDelay());
     loadDataFromModel(*controller->GetModel());
 }
 
@@ -183,17 +188,62 @@ void PostMachineView::exit()
 
 void PostMachineView::about()
 {
-    QMessageBox::about(this, "Про програму", "Автор");
+    QMessageBox::about(
+        this,
+        "Про програму",
+        "Програма розроблена для навчальних цілей, поширюється під ліцензією GNU GPL3. "
+        "Автор не несе відповідальність за використання програми. "
+        "Джерельний код можна завантажити за посиланням \nhttps://github.com/adidvar/postmachine");
 }
 
 void PostMachineView::instruction()
 {
-    QMessageBox::about(this, "Інструкція", "");
+    QMessageBox::about(
+        this,
+        "Інструкція по використаню програми",
+        "Набір команд:\n"
+        "< - здвиг стрічки вліво\n"
+        "> - здвиг стрічки вправо\n"
+        "1 - записати мітку на стрічку\n"
+        "0 - стерти мітку зі стрічки\n"
+        "! - команда завершення виконання\n"
+        "? - перехід на перше значення якщо на клітинці немає мітки, в іншому разі \n"
+        "перехід на друге знайчення\n"
+        "Переходи:\n"
+        "Якщо задане значення переходу, то машина після виконання команди перейде "
+        "на команду по номеру.\n"
+        "Якщо використовується команда ?, то ми задаємо 2 значення для переходів.\n"
+        "Якщо переходи не задані, машина перейде на наступну команду.\n"
+
+    );
 }
 
 void PostMachineView::timer()
 {
     controller->Timer();
-    m_timer->start(controller->GetModel()->getTimerDelay());
+    if (controller->GetModel()->isRunning())
+        m_timer->start(controller->GetModel()->getTimerDelay());
     loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::on_fast_speed_action_triggered()
+{
+    controller->HighSpeed();
+}
+
+void PostMachineView::on_normal_speed_action_triggered()
+{
+    controller->NormalSpeed();
+}
+
+void PostMachineView::on_slow_speed_action_triggered()
+{
+    controller->LowSpeed();
+}
+
+void PostMachineView::on_custom_speed_action_triggered()
+{
+    controller->CustomSpeed(QInputDialog::getInt(this,
+                                                 "Вибір швидкості",
+                                                 "Введіть затримку між командами в мілісекундах"));
 }
