@@ -94,3 +94,7 @@ void PostMachine::setTape(const Tape &tape)
     m_tape = tape;
     reset();
 }
+
+void PostMachine::saveToFile(QString url) const {}
+
+void PostMachine::loadFromFile(QString url) {}

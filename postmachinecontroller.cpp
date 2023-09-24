@@ -25,12 +25,18 @@ void PostMachineController::CommandEntered(size_t index,
 
 void PostMachineController::InsertCommand(size_t index)
 {
-    m_model->getCommands().insert(index, Command("", "", ""));
+    if (m_model->getCommands().size() < index)
+        m_model->getCommands().append(Command("", "", ""));
+    else
+        m_model->getCommands().insert(index, Command("", "", ""));
 }
 
 void PostMachineController::DeleteCommand(size_t index)
 {
-    m_model->getCommands().remove(index);
+    if (m_model->getCommands().size() > index)
+        m_model->getCommands().remove(index);
+    else if (!m_model->getCommands().empty())
+        m_model->getCommands().pop_back();
 }
 
 void PostMachineController::ChangeTapeValue(Tape::index_t index)
@@ -40,6 +46,7 @@ void PostMachineController::ChangeTapeValue(Tape::index_t index)
 
 void PostMachineController::Start()
 {
+    m_model->reset();
     m_model->run();
 }
 
@@ -52,6 +59,34 @@ void PostMachineController::Step()
 {
     m_model->nextStep();
 }
+
+void PostMachineController::CleanAll()
+{
+    m_model->setCommands({});
+    m_model->getTape().clear();
+}
+
+void PostMachineController::LoadFile(QString url)
+{
+    m_model->loadFromFile(url);
+}
+
+void PostMachineController::SaveFile(QString url)
+{
+    m_model->saveToFile(url);
+}
+
+void PostMachineController::LoadTape(QString url)
+{
+    m_model->getTape().loadFromFile(url);
+}
+
+void PostMachineController::SaveTape(QString url)
+{
+    m_model->getTape().saveToFile(url);
+}
+
+void PostMachineController::Timer() {}
 
 PostMachineModel *PostMachineController::GetModel() const
 {

@@ -42,6 +42,19 @@ private slots:
 
     void on_step_button_clicked();
 
+    void save_tape();
+    void load_tape();
+
+    void new_file();
+    void load_file();
+    void save_file();
+
+    void exit();
+    void about();
+    void instruction();
+
+    void timer();
+
 private:
     Ui::PostMachineView *ui;
     PostMachineController *controller;

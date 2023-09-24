@@ -1,7 +1,7 @@
 #ifndef TAPE_HPP
 #define TAPE_HPP
 
-#include <string>
+#include <QString>
 #include <vector>
 
 class Tape
@@ -20,8 +20,10 @@ public:
     void writeOnHead(bool value);
     bool readOnHead() const;
 
-    //void saveToFile() const;
-    //void loadFromFile();
+    void saveToFile(QString url) const;
+    void loadFromFile(QString url);
+
+    void clear();
 
 private:
     //std::vector<bool> m_positive;

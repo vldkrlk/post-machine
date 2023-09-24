@@ -1,4 +1,6 @@
 #include "postmachineview.hpp"
+#include <QFileDialog>
+#include <QMessageBox>
 #include "./ui_postmachineview.h"
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
@@ -11,6 +13,23 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     ui->setupUi(this);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
     connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
+    connect(ui->about_action, &QAction::triggered, this, &PostMachineView::about);
+    connect(ui->instruction_action, &QAction::triggered, this, &PostMachineView::instruction);
+    connect(ui->exit_action, &QAction::triggered, this, &PostMachineView::exit);
+
+    connect(ui->new_file_button, &QPushButton::clicked, this, &PostMachineView::new_file);
+
+    connect(ui->save_file_button, &QPushButton::clicked, this, &PostMachineView::save_file);
+    connect(ui->save_action, &QAction::triggered, this, &PostMachineView::save_file);
+
+    connect(ui->load_file_button, &QPushButton::clicked, this, &PostMachineView::load_file);
+    connect(ui->load_action, &QAction::triggered, this, &PostMachineView::load_file);
+
+    connect(ui->load_tape_button, &QPushButton::clicked, this, &PostMachineView::load_tape);
+    connect(ui->load_tape_action, &QAction::triggered, this, &PostMachineView::load_tape);
+
+    connect(ui->save_tape_button, &QPushButton::clicked, this, &PostMachineView::save_tape);
+    connect(ui->save_tape_action, &QAction::triggered, this, &PostMachineView::save_tape);
 }
 
 PostMachineView::~PostMachineView()
@@ -120,5 +139,60 @@ void PostMachineView::on_stop_button_clicked()
 void PostMachineView::on_step_button_clicked()
 {
     controller->Step();
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::save_tape()
+{
+    controller->SaveTape(
+        QFileDialog::getSaveFileName(this, "Виберіть файл для збереження", "", "*.post"));
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::load_tape()
+{
+    controller->LoadTape(
+        QFileDialog::getOpenFileName(this, "Виберіть файл для збереження", "", "*.post"));
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::new_file()
+{
+    controller->CleanAll();
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::load_file()
+{
+    controller->LoadFile(
+        QFileDialog::getOpenFileName(this, "Виберіть файл для збереження", "", "*.post"));
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::save_file()
+{
+    controller->SaveFile(
+        QFileDialog::getSaveFileName(this, "Виберіть файл для збереження", "", "*.post"));
+    loadDataFromModel(*controller->GetModel());
+}
+
+void PostMachineView::exit()
+{
+    QApplication::exit(0);
+}
+
+void PostMachineView::about()
+{
+    QMessageBox::about(this, "Про програму", "Автор");
+}
+
+void PostMachineView::instruction()
+{
+    QMessageBox::about(this, "Інструкція", "");
+}
+
+void PostMachineView::timer()
+{
+    controller->Timer();
     loadDataFromModel(*controller->GetModel());
 }

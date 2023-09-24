@@ -25,6 +25,9 @@ public:
     void setCommands(const QVector<Command> &commands);
     void setTape(const Tape &tape);
 
+    void saveToFile(QString url) const;
+    void loadFromFile(QString url);
+
 private:
     size_t m_command_index = 0;
     QVector<Command> m_commands;

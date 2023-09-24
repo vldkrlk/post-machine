@@ -18,6 +18,14 @@ public:
     void Stop();
     void Step();
 
+    void CleanAll();
+    void LoadFile(QString url);
+    void SaveFile(QString url);
+    void LoadTape(QString url);
+    void SaveTape(QString url);
+
+    void Timer();
+
     PostMachineModel *GetModel() const;
 
 private:

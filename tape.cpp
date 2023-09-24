@@ -34,3 +34,14 @@ bool Tape::readOnHead() const
 {
     return getValue(getHead());
 }
+
+void Tape::saveToFile(QString url) const {}
+
+void Tape::loadFromFile(QString url) {}
+
+void Tape::clear()
+{
+    m_head = 0;
+    for (size_t i = 0; i < m_vector.size(); i++)
+        m_vector[i] = 0;
+}
