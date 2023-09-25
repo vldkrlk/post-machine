@@ -193,12 +193,12 @@ void PostMachineView::exit()
 void PostMachineView::about()
 {
     QMessageBox::about(
-        this,
-        tr("Про програму"),
-        tr("Програма розроблена для навчальних цілей, поширюється під ліцензією GNU GPL3. "
+        this, tr("Про програму"),
+        tr("Програма розроблена для навчальних цілей, поширюється під "
+           "ліцензією GNU GPL3. "
            "Автор не несе відповідальність за використання програми. "
            "Джерельний код можна завантажити за посиланням "
-           "\nhttps://github.com/adidvar/postmachine"));
+           "\nhttps://github.com/adidvar/PostMachine"));
 }
 
 void PostMachineView::instruction()
