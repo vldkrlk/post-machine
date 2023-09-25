@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Машина Поста</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="recources.qrc">
+    <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
+  </property>
   <property name="locale">
    <locale language="Ukrainian" country="Ukraine"/>
   </property>
@@ -405,7 +409,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>exit_action</sender>
