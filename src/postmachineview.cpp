@@ -1,7 +1,9 @@
 #include "postmachineview.hpp"
+
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
+
 #include "./ui_postmachineview.h"
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"

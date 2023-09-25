@@ -18,6 +18,9 @@ file(GLOB PROJECT_SOURCES
      src/*.ui
 )
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+
 if (WIN32)
     set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/data/info.rc")
 endif ()
@@ -32,6 +35,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
         add_executable(PostMachine
                 ${PROJECT_SOURCES}
+                ${APP_ICON_RESOURCE_WINDOWS}
+                data/recources.qrc
         )
 endif()
 
