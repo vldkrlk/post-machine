@@ -16,7 +16,8 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
+    connect(ui->tape_widget, &TapeWidget::valueChanged, this,
+            &PostMachineView::tape_value_changed);
 
     connect(ui->about_action, &QAction::triggered, this, &PostMachineView::about);
 
@@ -89,14 +90,14 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
 
 void PostMachineView::on_scroll_left_button_clicked()
 {
-    controller->MoveTapeLeft();
-    loadDataFromModel(*controller->GetModel());
+    controller->moveTapeLeft();
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_scroll_right_button_clicked()
 {
-    controller->MoveTapeRight();
-    loadDataFromModel(*controller->GetModel());
+    controller->moveTapeRight();
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
@@ -109,80 +110,80 @@ void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
     auto argc = ui->commands_widget->item(row, 1)->text();
     auto comment = ui->commands_widget->item(row, 2)->text();
 
-    controller->CommandEntered(row, command, argc, comment);
+    controller->commandEntered(row, command, argc, comment);
 
-    loadDataFromModel(*controller->GetModel());
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_insert_button_clicked()
 {
-    controller->InsertCommand(ui->commands_widget->currentRow());
-    loadDataFromModel(*controller->GetModel());
+    controller->insertCommand(ui->commands_widget->currentRow());
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_remove_button_clicked()
 {
-    controller->DeleteCommand(ui->commands_widget->currentRow());
-    loadDataFromModel(*controller->GetModel());
+    controller->deleteCommand(ui->commands_widget->currentRow());
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::tape_value_changed(Tape::index_t index)
 {
-    controller->ChangeTapeValue(index);
-    loadDataFromModel(*controller->GetModel());
+    controller->changeTapeValue(index);
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_run_button_clicked()
 {
-    controller->Start();
-    m_timer->start(controller->GetModel()->getTimerDelay());
-    loadDataFromModel(*controller->GetModel());
+    controller->start();
+    m_timer->start(controller->getModel()->getTimerDelay());
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_stop_button_clicked()
 {
-    controller->Stop();
-    loadDataFromModel(*controller->GetModel());
+    controller->stop();
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_step_button_clicked()
 {
-    controller->Step();
-    loadDataFromModel(*controller->GetModel());
+    controller->step();
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::save_tape()
 {
-    controller->SaveTape(
-        QFileDialog::getSaveFileName(this, tr("Виберіть файл для збереження"), "", "*.posttape"));
-    loadDataFromModel(*controller->GetModel());
+    controller->saveTape(QFileDialog::getSaveFileName(
+        this, tr("Виберіть файл для збереження"), "", "*.posttape"));
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::load_tape()
 {
-    controller->LoadTape(
-        QFileDialog::getOpenFileName(this, tr("Виберіть файл для збереження"), "", "*.posttape"));
-    loadDataFromModel(*controller->GetModel());
+    controller->loadTape(QFileDialog::getOpenFileName(
+        this, tr("Виберіть файл для збереження"), "", "*.posttape"));
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::new_file()
 {
-    controller->CleanAll();
-    loadDataFromModel(*controller->GetModel());
+    controller->cleanAll();
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::load_file()
 {
-    controller->LoadFile(
-        QFileDialog::getOpenFileName(this, tr("Виберіть файл для збереження"), "", "*.post"));
-    loadDataFromModel(*controller->GetModel());
+    controller->loadFile(QFileDialog::getOpenFileName(
+        this, tr("Виберіть файл для збереження"), "", "*.post"));
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::save_file()
 {
-    controller->SaveFile(
-        QFileDialog::getSaveFileName(this, tr("Виберіть файл для збереження"), "", "*.post"));
-    loadDataFromModel(*controller->GetModel());
+    controller->saveFile(QFileDialog::getSaveFileName(
+        this, tr("Виберіть файл для збереження"), "", "*.post"));
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::exit()
@@ -225,31 +226,30 @@ void PostMachineView::instruction()
 
 void PostMachineView::timer()
 {
-    controller->Timer();
-    if (controller->GetModel()->isRunning())
-        m_timer->start(controller->GetModel()->getTimerDelay());
-    loadDataFromModel(*controller->GetModel());
+    controller->timer();
+    if (controller->getModel()->isRunning())
+        m_timer->start(controller->getModel()->getTimerDelay());
+    loadDataFromModel(*controller->getModel());
 }
 
 void PostMachineView::on_fast_speed_action_triggered()
 {
-    controller->HighSpeed();
+    controller->highSpeed();
 }
 
 void PostMachineView::on_normal_speed_action_triggered()
 {
-    controller->NormalSpeed();
+    controller->normalSpeed();
 }
 
 void PostMachineView::on_slow_speed_action_triggered()
 {
-    controller->LowSpeed();
+    controller->lowSpeed();
 }
 
 void PostMachineView::on_custom_speed_action_triggered()
 {
-    controller->CustomSpeed(
-        QInputDialog::getInt(this,
-                             tr("Вибір швидкості"),
-                             tr("Введіть затримку між командами в мілісекундах")));
+    controller->customSpeed(QInputDialog::getInt(
+        this, tr("Вибір швидкості"),
+        tr("Введіть затримку між командами в мілісекундах")));
 }

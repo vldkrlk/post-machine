@@ -5,17 +5,17 @@ PostMachineController::PostMachineController(PostMachineModel *model)
     : m_model(model)
 {}
 
-void PostMachineController::MoveTapeRight()
+void PostMachineController::moveTapeRight()
 {
     m_model->moveTape(1);
 }
 
-void PostMachineController::MoveTapeLeft()
+void PostMachineController::moveTapeLeft()
 {
     m_model->moveTape(-1);
 }
 
-void PostMachineController::CommandEntered(size_t index,
+void PostMachineController::commandEntered(size_t index,
                                            QString data,
                                            QString params,
                                            QString comment)
@@ -23,7 +23,7 @@ void PostMachineController::CommandEntered(size_t index,
     m_model->getCommands()[index] = Command(data, params, comment);
 }
 
-void PostMachineController::InsertCommand(size_t index)
+void PostMachineController::insertCommand(size_t index)
 {
     if (m_model->getCommands().size() < index)
         m_model->getCommands().append(Command());
@@ -31,7 +31,7 @@ void PostMachineController::InsertCommand(size_t index)
         m_model->getCommands().insert(index, Command());
 }
 
-void PostMachineController::DeleteCommand(size_t index)
+void PostMachineController::deleteCommand(size_t index)
 {
     if (m_model->getCommands().size() > index)
         m_model->getCommands().remove(index);
@@ -39,54 +39,54 @@ void PostMachineController::DeleteCommand(size_t index)
         m_model->getCommands().pop_back();
 }
 
-void PostMachineController::ChangeTapeValue(Tape::index_t index)
+void PostMachineController::changeTapeValue(Tape::index_t index)
 {
     m_model->getTape().setValue(index, !m_model->getTape().getValue(index));
 }
 
-void PostMachineController::Start()
+void PostMachineController::start()
 {
     m_model->reset();
     m_model->run();
 }
 
-void PostMachineController::Stop()
+void PostMachineController::stop()
 {
     m_model->stop();
 }
 
-void PostMachineController::Step()
+void PostMachineController::step()
 {
     m_model->nextStep();
 }
 
-void PostMachineController::CleanAll()
+void PostMachineController::cleanAll()
 {
     m_model->setCommands({});
     m_model->getTape().clear();
 }
 
-void PostMachineController::LoadFile(QString url)
+void PostMachineController::loadFile(QString url)
 {
     m_model->loadFromFile(url);
 }
 
-void PostMachineController::SaveFile(QString url)
+void PostMachineController::saveFile(QString url)
 {
     m_model->saveToFile(url);
 }
 
-void PostMachineController::LoadTape(QString url)
+void PostMachineController::loadTape(QString url)
 {
     m_model->getTape().loadFromFile(url);
 }
 
-void PostMachineController::SaveTape(QString url)
+void PostMachineController::saveTape(QString url)
 {
     m_model->getTape().saveToFile(url);
 }
 
-void PostMachineController::Timer()
+void PostMachineController::timer()
 {
     if (m_model->isRunning())
         m_model->nextStep();
@@ -94,27 +94,27 @@ void PostMachineController::Timer()
         m_model->stop();
 }
 
-void PostMachineController::HighSpeed()
+void PostMachineController::highSpeed()
 {
     m_model->setTimerDelay(100);
 }
 
-void PostMachineController::NormalSpeed()
+void PostMachineController::normalSpeed()
 {
     m_model->setTimerDelay(800);
 }
 
-void PostMachineController::LowSpeed()
+void PostMachineController::lowSpeed()
 {
     m_model->setTimerDelay(1500);
 }
 
-void PostMachineController::CustomSpeed(int speed)
+void PostMachineController::customSpeed(int speed)
 {
     m_model->setTimerDelay(speed);
 }
 
-PostMachineModel *PostMachineController::GetModel() const
+PostMachineModel *PostMachineController::getModel() const
 {
     return m_model;
 }

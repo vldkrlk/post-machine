@@ -3,41 +3,41 @@
 
 #include "postmachinemodel.hpp"
 
-class PostMachineController
-{
-public:
-    PostMachineController(PostMachineModel *model);
+class PostMachineController {
+ public:
+  PostMachineController(PostMachineModel *model);
 
-    void MoveTapeRight();
-    void MoveTapeLeft();
+  void moveTapeRight();
+  void moveTapeLeft();
 
-    void CommandEntered(size_t index, QString data, QString params, QString comment);
-    void InsertCommand(size_t index);
-    void DeleteCommand(size_t index);
+  void commandEntered(size_t index, QString data, QString params,
+                      QString comment);
+  void insertCommand(size_t index);
+  void deleteCommand(size_t index);
 
-    void ChangeTapeValue(Tape::index_t index);
+  void changeTapeValue(Tape::index_t index);
 
-    void Start();
-    void Stop();
-    void Step();
+  void start();
+  void stop();
+  void step();
 
-    void CleanAll();
-    void LoadFile(QString url);
-    void SaveFile(QString url);
-    void LoadTape(QString url);
-    void SaveTape(QString url);
+  void cleanAll();
+  void loadFile(QString url);
+  void saveFile(QString url);
+  void loadTape(QString url);
+  void saveTape(QString url);
 
-    void Timer();
+  void timer();
 
-    void HighSpeed();
-    void NormalSpeed();
-    void LowSpeed();
-    void CustomSpeed(int speed);
+  void highSpeed();
+  void normalSpeed();
+  void lowSpeed();
+  void customSpeed(int speed);
 
-    PostMachineModel *GetModel() const;
+  PostMachineModel *getModel() const;
 
-private:
-    PostMachineModel *m_model;
+ private:
+  PostMachineModel *m_model;
 };
 
 #endif

@@ -17,7 +17,7 @@ public:
     virtual void paintEvent(QPaintEvent *event);
     virtual void mouseDoubleClickEvent(QMouseEvent *event);
 signals:
-    void ValueChanged(Tape::index_t index);
+ void valueChanged(Tape::index_t index);
 
 private:
     Tape m_tape;

@@ -59,7 +59,7 @@ void TapeWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
     int index = (event->pos().x() - vstep) / cell_width;
     Tape::index_t real_index = index - middle + m_tape.getHead();
-    emit ValueChanged(real_index);
+    emit valueChanged(real_index);
 }
 
 void TapeWidget::loadFromTape(const Tape &tape)
