@@ -13,17 +13,16 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 file(GLOB PROJECT_SOURCES
-     *.hpp
-     *.cpp
-     *.ui
-     *.qrc
+     src/*.hpp
+     src/*.cpp
+     src/*.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(PostMachine
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        recources.qrc
+        data/recources.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET PostMachine APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -14,7 +14,7 @@
    <string>Машина Поста</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="recources.qrc">
+   <iconset resource="../data/recources.qrc">
     <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
   </property>
   <property name="locale">
@@ -410,7 +410,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="recources.qrc"/>
+  <include location="../data/recources.qrc"/>
  </resources>
  <connections>
   <connection>
