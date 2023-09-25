@@ -110,11 +110,9 @@ void PostMachine::saveToFile(QString url) const
 
     io << m_commands.size() << " ";
 
-    /*
     for (auto value : m_commands) {
-        io << value << " ";
+        io << value.getCommand() << ";" << value.getJumps() << ";" << value.getComment() << "\r\n";
     }
-*/
 
     file.close();
 }
@@ -127,19 +125,19 @@ void PostMachine::loadFromFile(QString url)
         file.close();
         return;
     }
+    m_commands.clear();
+
     QTextStream io(&file);
 
     size_t size;
 
     io >> size;
 
-    /*
     for (size_t i = 0; i < size; i++) {
-        int value;
-        io >> value;
-        m_positive.push_back(value);
+        auto line = io.readLine();
+        auto elements = line.split(";");
+        m_commands.push_back(Command(elements[0], elements[1], elements[2]));
     }
-*/
 
     file.close();
 }
