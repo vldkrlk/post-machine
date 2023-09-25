@@ -17,10 +17,14 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     connect(ui->tape_widget, &TapeWidget::ValueChanged, this, &PostMachineView::tape_value_changed);
+
     connect(ui->about_action, &QAction::triggered, this, &PostMachineView::about);
+
     connect(ui->instruction_action, &QAction::triggered, this, &PostMachineView::instruction);
+
     connect(ui->exit_action, &QAction::triggered, this, &PostMachineView::exit);
 
+    connect(ui->new_file_action, &QAction::triggered, this, &PostMachineView::new_file);
 
     connect(ui->save_action, &QAction::triggered, this, &PostMachineView::save_file);
 

@@ -301,6 +301,7 @@
      <string>Файл</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="new_file_action"/>
     <addaction name="load_action"/>
     <addaction name="save_action"/>
     <addaction name="separator"/>
@@ -388,6 +389,11 @@
   <action name="custom_speed_action">
    <property name="text">
     <string>Власна швидкість</string>
+   </property>
+  </action>
+  <action name="new_file_action">
+   <property name="text">
+    <string>Нова програма</string>
    </property>
   </action>
  </widget>

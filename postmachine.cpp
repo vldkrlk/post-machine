@@ -1,5 +1,8 @@
 #include "postmachine.hpp"
 
+#include <QFile>
+#include <QTextStream>
+
 void PostMachine::nextStep()
 {
     if (m_command_index >= m_commands.size())
@@ -95,6 +98,48 @@ void PostMachine::setTape(const Tape &tape)
     reset();
 }
 
-void PostMachine::saveToFile(QString url) const {}
+void PostMachine::saveToFile(QString url) const
+{
+    QFile file(url);
+    file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
+    if (!file.isOpen()) {
+        file.close();
+        return;
+    }
+    QTextStream io(&file);
 
-void PostMachine::loadFromFile(QString url) {}
+    io << m_commands.size() << " ";
+
+    /*
+    for (auto value : m_commands) {
+        io << value << " ";
+    }
+*/
+
+    file.close();
+}
+
+void PostMachine::loadFromFile(QString url)
+{
+    QFile file(url);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    if (!file.isOpen()) {
+        file.close();
+        return;
+    }
+    QTextStream io(&file);
+
+    size_t size;
+
+    io >> size;
+
+    /*
+    for (size_t i = 0; i < size; i++) {
+        int value;
+        io >> value;
+        m_positive.push_back(value);
+    }
+*/
+
+    file.close();
+}
