@@ -54,17 +54,17 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->commands_widget->setEnabled(!model.isRunning());
 
     if (model.isRunning()) {
-        ui->status_label->setText("Виконується");
+        ui->status_label->setText(tr("Виконується"));
     } else {
         if (model.isError())
             if (model.getCommandIndex() != 0)
-                ui->status_label->setText("Машина зупинилася через помилку під час виконання");
+                ui->status_label->setText(tr("Машина зупинилася через помилку під час виконання"));
             else
                 ui->status_label->setText("");
         else if (model.isEnd())
-            ui->status_label->setText("Машина зупинилася на команді зупинки");
+            ui->status_label->setText(tr("Машина зупинилася на команді зупинки"));
         else
-            ui->status_label->setText("Машина очікує команди");
+            ui->status_label->setText(tr("Машина очікує команди"));
     }
 
     auto commands = model.getCommands();
@@ -150,14 +150,14 @@ void PostMachineView::on_step_button_clicked()
 void PostMachineView::save_tape()
 {
     controller->SaveTape(
-        QFileDialog::getSaveFileName(this, "Виберіть файл для збереження", "", "*.posttape"));
+        QFileDialog::getSaveFileName(this, tr("Виберіть файл для збереження"), "", "*.posttape"));
     loadDataFromModel(*controller->GetModel());
 }
 
 void PostMachineView::load_tape()
 {
     controller->LoadTape(
-        QFileDialog::getOpenFileName(this, "Виберіть файл для збереження", "", "*.posttape"));
+        QFileDialog::getOpenFileName(this, tr("Виберіть файл для збереження"), "", "*.posttape"));
     loadDataFromModel(*controller->GetModel());
 }
 
@@ -170,14 +170,14 @@ void PostMachineView::new_file()
 void PostMachineView::load_file()
 {
     controller->LoadFile(
-        QFileDialog::getOpenFileName(this, "Виберіть файл для збереження", "", "*.post"));
+        QFileDialog::getOpenFileName(this, tr("Виберіть файл для збереження"), "", "*.post"));
     loadDataFromModel(*controller->GetModel());
 }
 
 void PostMachineView::save_file()
 {
     controller->SaveFile(
-        QFileDialog::getSaveFileName(this, "Виберіть файл для збереження", "", "*.post"));
+        QFileDialog::getSaveFileName(this, tr("Виберіть файл для збереження"), "", "*.post"));
     loadDataFromModel(*controller->GetModel());
 }
 
@@ -190,30 +190,31 @@ void PostMachineView::about()
 {
     QMessageBox::about(
         this,
-        "Про програму",
-        "Програма розроблена для навчальних цілей, поширюється під ліцензією GNU GPL3. "
-        "Автор не несе відповідальність за використання програми. "
-        "Джерельний код можна завантажити за посиланням \nhttps://github.com/adidvar/postmachine");
+        tr("Про програму"),
+        tr("Програма розроблена для навчальних цілей, поширюється під ліцензією GNU GPL3. "
+           "Автор не несе відповідальність за використання програми. "
+           "Джерельний код можна завантажити за посиланням "
+           "\nhttps://github.com/adidvar/postmachine"));
 }
 
 void PostMachineView::instruction()
 {
     QMessageBox::about(
         this,
-        "Інструкція по використаню програми",
-        "Набір команд:\n"
-        "< - здвиг стрічки вліво\n"
-        "> - здвиг стрічки вправо\n"
-        "1 - записати мітку на стрічку\n"
-        "0 - стерти мітку зі стрічки\n"
-        "! - команда завершення виконання\n"
-        "? - перехід на перше значення якщо на клітинці немає мітки, в іншому разі \n"
-        "перехід на друге знайчення\n"
-        "Переходи:\n"
-        "Якщо задане значення переходу, то машина після виконання команди перейде "
-        "на команду по номеру.\n"
-        "Якщо використовується команда ?, то ми задаємо 2 значення для переходів.\n"
-        "Якщо переходи не задані, машина перейде на наступну команду.\n"
+        tr("Інструкція по використаню програми"),
+        tr("Набір команд:\n"
+           "< - здвиг стрічки вліво\n"
+           "> - здвиг стрічки вправо\n"
+           "1 - записати мітку на стрічку\n"
+           "0 - стерти мітку зі стрічки\n"
+           "! - команда завершення виконання\n"
+           "? - перехід на перше значення якщо на клітинці немає мітки, в іншому разі \n"
+           "перехід на друге знайчення\n"
+           "Переходи:\n"
+           "Якщо задане значення переходу, то машина після виконання команди перейде "
+           "на команду по номеру.\n"
+           "Якщо використовується команда ?, то ми задаємо 2 значення для переходів.\n"
+           "Якщо переходи не задані, машина перейде на наступну команду.\n")
 
     );
 }
@@ -243,7 +244,8 @@ void PostMachineView::on_slow_speed_action_triggered()
 
 void PostMachineView::on_custom_speed_action_triggered()
 {
-    controller->CustomSpeed(QInputDialog::getInt(this,
-                                                 "Вибір швидкості",
-                                                 "Введіть затримку між командами в мілісекундах"));
+    controller->CustomSpeed(
+        QInputDialog::getInt(this,
+                             tr("Вибір швидкості"),
+                             tr("Введіть затримку між командами в мілісекундах")));
 }

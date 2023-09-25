@@ -9,6 +9,7 @@ public:
     enum Type { MoveLeft, MoveRight, WriteZero, WriteOne, MoveIF, End, Invalid };
     const static size_t kinvalid_jump = std::numeric_limits<size_t>::max();
 
+    Command();
     Command(QString command, QString jumps, QString comment);
 
     Type getType() const;

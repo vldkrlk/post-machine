@@ -26,9 +26,9 @@ void PostMachineController::CommandEntered(size_t index,
 void PostMachineController::InsertCommand(size_t index)
 {
     if (m_model->getCommands().size() < index)
-        m_model->getCommands().append(Command("", "", ""));
+        m_model->getCommands().append(Command());
     else
-        m_model->getCommands().insert(index, Command("", "", ""));
+        m_model->getCommands().insert(index, Command());
 }
 
 void PostMachineController::DeleteCommand(size_t index)

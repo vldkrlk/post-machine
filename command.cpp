@@ -2,6 +2,8 @@
 
 #include <QList>
 
+Command::Command() {}
+
 Command::Command(QString command, QString jumps, QString comment)
     : m_comment(comment)
 {

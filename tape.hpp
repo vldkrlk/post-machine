@@ -26,9 +26,8 @@ public:
     void clear();
 
 private:
-    //std::vector<bool> m_positive;
-    //std::vector<bool> m_negative;
-    std::vector<bool> m_vector;
+    std::vector<bool> m_positive;
+    std::vector<bool> m_negative;
     index_t m_head = 0;
 };
 
