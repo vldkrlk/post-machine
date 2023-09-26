@@ -47,7 +47,7 @@ PostMachineView::~PostMachineView()
 
 void PostMachineView::loadDataFromModel(const PostMachineModel &model)
 {
-    m_table_editing = true;
+    m_editing = true;
 
     auto status = model.getStatus();
     switch (status) {
@@ -69,6 +69,8 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
             tr("Post machine stopped because found a invalid command"));
         break;
     }
+
+    // ui->problem_edit->setText(model.getProblem());
 
     ui->tape_widget->loadFromTape(model.getTape());
 
@@ -109,7 +111,7 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     }
     ui->commands_widget->selectRow(model.getCommandIndex());
 
-    m_table_editing = false;
+    m_editing = false;
 }
 
 void PostMachineView::on_scroll_left_button_clicked()
@@ -126,8 +128,7 @@ void PostMachineView::on_scroll_right_button_clicked()
 
 void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
 {
-    if (m_table_editing)
-        return;
+    if (m_editing) return;
 
     auto row = item->row();
     auto command = ui->commands_widget->item(row, 0)->text();
@@ -279,4 +280,10 @@ void PostMachineView::on_custom_speed_action_triggered()
 {
     controller->customSpeed(QInputDialog::getInt(
         this, tr("Custom speed"), tr("Enter delay between commands in ms")));
+}
+
+void PostMachineView::on_problem_edit_textChanged() {
+    if (m_editing) return;
+    controller->problemTextChanged(ui->problem_edit->toPlainText());
+    loadDataFromModel(*controller->getModel());
 }

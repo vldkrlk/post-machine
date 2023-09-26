@@ -34,7 +34,7 @@ class PostMachineController {
   void lowSpeed();
   void customSpeed(int speed);
 
-  void clearError();
+  void problemTextChanged(QString text);
 
   PostMachineModel *getModel() const;
 

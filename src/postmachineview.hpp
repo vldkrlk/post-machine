@@ -64,10 +64,12 @@ private slots:
 
     void on_custom_speed_action_triggered();
 
-private:
+    void on_problem_edit_textChanged();
+
+   private:
     Ui::PostMachineView *ui;
     PostMachineController *controller;
     QTimer *m_timer;
-    bool m_table_editing = false;
+    bool m_editing = false;
 };
 #endif // POSTMACHINEVIEW_HPP

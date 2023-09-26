@@ -111,7 +111,9 @@ void PostMachineController::customSpeed(int speed)
     m_model->setTimerDelay(speed);
 }
 
-void PostMachineController::clearError() {}
+void PostMachineController::problemTextChanged(QString text) {
+    m_model->setProblem(text);
+}
 
 PostMachineModel *PostMachineController::getModel() const
 {

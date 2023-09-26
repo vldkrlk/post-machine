@@ -32,3 +32,7 @@ void PostMachineModel::setTimerDelay(int delay)
 {
     m_timer_delay = delay;
 }
+
+QString PostMachineModel::getProblem() const { return m_problem; }
+
+void PostMachineModel::setProblem(QString problem) { m_problem = problem; }

@@ -1,6 +1,7 @@
 #ifndef POSTMACHINEMODEL_HPP
 #define POSTMACHINEMODEL_HPP
 
+#include <QString>
 #include <QVector>
 
 #include "postmachine.hpp"
@@ -19,7 +20,11 @@ public:
     int getTimerDelay();
     void setTimerDelay(int delay);
 
-private:
+    QString getProblem() const;
+    void setProblem(QString problem);
+
+   private:
+    QString m_problem;
     bool m_is_working = false;
     int m_timer_delay = 2000;
 };
