@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>798</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Машина Поста</string>
+   <string>Post Machine</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../data/recources.qrc">
@@ -21,37 +21,24 @@
    <locale language="Ukrainian" country="Ukraine"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <spacer name="space_1">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Maximum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QToolButton" name="run_button">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>30</height>
            </size>
           </property>
           <property name="text">
-           <string>Старт</string>
+           <string>Start</string>
           </property>
          </widget>
         </item>
@@ -59,12 +46,12 @@
          <widget class="QToolButton" name="stop_button">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>30</height>
            </size>
           </property>
           <property name="text">
-           <string>Стоп</string>
+           <string>Stop</string>
           </property>
          </widget>
         </item>
@@ -72,35 +59,12 @@
          <widget class="QToolButton" name="step_button">
           <property name="minimumSize">
            <size>
-            <width>30</width>
+            <width>40</width>
             <height>30</height>
            </size>
           </property>
           <property name="text">
-           <string>Крок</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Minimum</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>60</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="status_label">
-          <property name="text">
-           <string>Запущена</string>
+           <string>Next</string>
           </property>
          </widget>
         </item>
@@ -118,6 +82,54 @@
          </spacer>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Problem</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="problem_edit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="Line" name="line">
@@ -157,8 +169,14 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>600</width>
             <height>80</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
            </size>
           </property>
          </widget>
@@ -238,6 +256,12 @@
         </item>
         <item>
          <widget class="QTableWidget" name="commands_widget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>10</verstretch>
+           </sizepolicy>
+          </property>
           <property name="autoScroll">
            <bool>true</bool>
           </property>
@@ -270,17 +294,17 @@
           </attribute>
           <column>
            <property name="text">
-            <string>Команда</string>
+            <string>Command</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Перехід</string>
+            <string>Jump</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>Коментар</string>
+            <string>Comment</string>
            </property>
           </column>
          </widget>
@@ -296,13 +320,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>798</width>
      <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Файл</string>
+     <string>File</string>
     </property>
     <addaction name="separator"/>
     <addaction name="new_file_action"/>
@@ -313,21 +337,21 @@
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>Стрічка</string>
+     <string>Tape</string>
     </property>
     <addaction name="load_tape_action"/>
     <addaction name="save_tape_action"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
-     <string>Допомога</string>
+     <string>About</string>
     </property>
     <addaction name="instruction_action"/>
     <addaction name="about_action"/>
    </widget>
    <widget class="QMenu" name="menu_4">
     <property name="title">
-     <string>Швидкість</string>
+     <string>Speed</string>
     </property>
     <addaction name="fast_speed_action"/>
     <addaction name="normal_speed_action"/>
@@ -342,62 +366,98 @@
   </widget>
   <action name="instruction_action">
    <property name="text">
-    <string>Інструкція по використанню</string>
+    <string>Guide</string>
+   </property>
+   <property name="shortcut">
+    <string>G</string>
    </property>
   </action>
   <action name="about_action">
    <property name="text">
-    <string>Про програму</string>
+    <string>About</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
    </property>
   </action>
   <action name="load_tape_action">
    <property name="text">
-    <string>Завантажити стан стрічки</string>
+    <string>Load</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+O</string>
    </property>
   </action>
   <action name="save_tape_action">
    <property name="text">
-    <string>Зберегти стан стрічки</string>
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
    </property>
   </action>
   <action name="load_action">
    <property name="text">
-    <string>Завантажити програму</string>
+    <string>Load</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="save_action">
    <property name="text">
-    <string>Зберегти програму</string>
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="exit_action">
    <property name="text">
-    <string>Вихід</string>
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="fast_speed_action">
    <property name="text">
-    <string>Швидко</string>
+    <string>Fast</string>
+   </property>
+   <property name="shortcut">
+    <string>F</string>
    </property>
   </action>
   <action name="normal_speed_action">
    <property name="text">
-    <string>Нормально</string>
+    <string>Normal</string>
+   </property>
+   <property name="shortcut">
+    <string>N</string>
    </property>
   </action>
   <action name="slow_speed_action">
    <property name="text">
-    <string>Повільно</string>
+    <string>Slow</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
    </property>
   </action>
   <action name="custom_speed_action">
    <property name="text">
-    <string>Власна швидкість</string>
+    <string>Custom</string>
+   </property>
+   <property name="shortcut">
+    <string>C</string>
    </property>
   </action>
   <action name="new_file_action">
    <property name="text">
-    <string>Нова програма</string>
+    <string>New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
  </widget>

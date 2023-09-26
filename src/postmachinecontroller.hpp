@@ -34,6 +34,8 @@ class PostMachineController {
   void lowSpeed();
   void customSpeed(int speed);
 
+  void clearError();
+
   PostMachineModel *getModel() const;
 
  private:

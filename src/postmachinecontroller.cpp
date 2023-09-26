@@ -46,7 +46,6 @@ void PostMachineController::changeTapeValue(Tape::index_t index)
 
 void PostMachineController::start()
 {
-    m_model->reset();
     m_model->run();
 }
 
@@ -55,10 +54,7 @@ void PostMachineController::stop()
     m_model->stop();
 }
 
-void PostMachineController::step()
-{
-    m_model->nextStep();
-}
+void PostMachineController::step() { m_model->nextStep(); }
 
 void PostMachineController::cleanAll()
 {
@@ -88,10 +84,11 @@ void PostMachineController::saveTape(QString url)
 
 void PostMachineController::timer()
 {
-    if (m_model->isRunning())
-        m_model->nextStep();
-    if (m_model->isEnd())
+    if (m_model->getStatus() != PostMachine::NoError) {
+        m_model->reset();
         m_model->stop();
+    }
+    if (m_model->isRunning()) m_model->nextStep();
 }
 
 void PostMachineController::highSpeed()
@@ -113,6 +110,8 @@ void PostMachineController::customSpeed(int speed)
 {
     m_model->setTimerDelay(speed);
 }
+
+void PostMachineController::clearError() {}
 
 PostMachineModel *PostMachineController::getModel() const
 {

@@ -5,33 +5,40 @@
 #include "command.hpp"
 #include "tape.hpp"
 
-class PostMachine
-{
-public:
-    void nextStep();
-    void reset();
-    bool isEnd() const;
-    bool isError() const;
+class PostMachine {
+ public:
+  enum Status {
+    NoError,
+    OutOfCommands,
+    EndCommand,
+    InvalidCommand,
+  };
 
-    size_t getCommandIndex() const;
+  Status getStatus() const;
 
-    const QVector<Command> &getCommands() const;
-    QVector<Command> &getCommands();
+  void nextStep();
+  void reset();
 
-    const Tape &getTape() const;
-    Tape &getTape();
+  size_t getCommandIndex() const;
 
-    void setCommandIndex(size_t index);
-    void setCommands(const QVector<Command> &commands);
-    void setTape(const Tape &tape);
+  const QVector<Command> &getCommands() const;
+  QVector<Command> &getCommands();
 
-    void saveToFile(QString url) const;
-    void loadFromFile(QString url);
+  const Tape &getTape() const;
+  Tape &getTape();
 
-private:
-    size_t m_command_index = 0;
-    QVector<Command> m_commands;
-    Tape m_tape;
+  void setCommandIndex(size_t index);
+  void setCommands(const QVector<Command> &commands);
+  void setTape(const Tape &tape);
+
+  void saveToFile(QString url) const;
+  void loadFromFile(QString url);
+
+ private:
+  Status m_status = NoError;
+  size_t m_command_index = 0;
+  QVector<Command> m_commands;
+  Tape m_tape;
 };
 
 #endif
