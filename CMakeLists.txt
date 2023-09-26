@@ -18,6 +18,8 @@ file(GLOB PROJECT_SOURCES
      src/*.ui
 )
 
+include_directories(src)
+
 if (WIN32)
     set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/data/info.rc")
 endif ()
