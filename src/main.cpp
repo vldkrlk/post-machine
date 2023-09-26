@@ -1,22 +1,30 @@
 #include <QApplication>
+#include <QLocale>
+#include <QTranslator>
 
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
 #include "postmachineview.hpp"
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+int main(int argc, char *argv[]) {
+  QApplication a(argc, argv);
 
-    PostMachineModel *model = new PostMachineModel();
+  QTranslator translator;
 
-    PostMachineController *controller = new PostMachineController(model);
+  if (translator.load(QLocale::system(), "postmachine", ".", "."))
+    QApplication::installTranslator(&translator);
+  else if (translator.load(QLocale::system(), "postmachine", ".", "/locales"))
+    QApplication::installTranslator(&translator);
 
-    PostMachineView *view = new PostMachineView(controller);
+  PostMachineModel *model = new PostMachineModel();
 
-    view->loadDataFromModel(*model);
+  PostMachineController *controller = new PostMachineController(model);
 
-    view->show();
+  PostMachineView *view = new PostMachineView(controller);
 
-    return a.exec();
+  view->loadDataFromModel(*model);
+
+  view->show();
+
+  return a.exec();
 }

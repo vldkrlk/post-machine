@@ -37,10 +37,15 @@ else()
         )
 endif()
 
-qt_add_translations(PostMachine TS_FILES ${CMAKE_SOURCE_DIR}/locale/uk_UA.ts QM_FILES_OUTPUT_VARIABLE qm_files)
+set(TRANSLATIONS_FILES ${CMAKE_SOURCE_DIR}/locales/postmachine.uk_UA.ts
+                       ${CMAKE_SOURCE_DIR}/locales/postmachine.en_US.ts
+)
+
+qt_add_translations(PostMachine TS_FILES ${TRANSLATIONS_FILES} QM_FILES_OUTPUT_VARIABLE qm_files)
 install(FILES ${qm_files} DESTINATION "locales")
 
 add_dependencies(PostMachine PostMachine_lupdate)
+add_dependencies(PostMachine PostMachine_lrelease)
 
 target_link_libraries(PostMachine PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
