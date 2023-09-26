@@ -9,17 +9,14 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 
 file(GLOB PROJECT_SOURCES
      src/*.hpp
      src/*.cpp
      src/*.ui
 )
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 if (WIN32)
     set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/data/info.rc")
@@ -39,6 +36,11 @@ else()
                 data/recources.qrc
         )
 endif()
+
+qt_add_translations(PostMachine TS_FILES ${CMAKE_SOURCE_DIR}/locale/uk_UA.ts QM_FILES_OUTPUT_VARIABLE qm_files)
+install(FILES ${qm_files} DESTINATION "locales")
+
+add_dependencies(PostMachine PostMachine_lupdate)
 
 target_link_libraries(PostMachine PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
