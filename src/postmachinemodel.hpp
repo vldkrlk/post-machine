@@ -29,7 +29,7 @@ public:
    private:
     QString m_problem;
     bool m_is_working = false;
-    int m_timer_delay = 2000;
+    int m_timer_delay;
 };
 
 #endif

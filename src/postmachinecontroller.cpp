@@ -96,15 +96,9 @@ void PostMachineController::highSpeed()
     m_model->setTimerDelay(100);
 }
 
-void PostMachineController::normalSpeed()
-{
-    m_model->setTimerDelay(800);
-}
+void PostMachineController::normalSpeed() { m_model->setTimerDelay(500); }
 
-void PostMachineController::lowSpeed()
-{
-    m_model->setTimerDelay(1500);
-}
+void PostMachineController::lowSpeed() { m_model->setTimerDelay(1200); }
 
 void PostMachineController::customSpeed(int speed)
 {

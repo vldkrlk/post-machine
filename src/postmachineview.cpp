@@ -38,6 +38,8 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
     connect(ui->save_tape_action, &QAction::triggered, this, &PostMachineView::save_tape);
 
     connect(m_timer, &QTimer::timeout, this, &PostMachineView::timer);
+
+    controller->normalSpeed();
 }
 
 PostMachineView::~PostMachineView()
