@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
   QTranslator translator;
 
-  if (translator.load(QLocale("uk_UA"), "postmachine", ".", "."))
+  if (translator.load(QLocale::system(), "postmachine", ".", "."))
     QApplication::installTranslator(&translator);
   else if (translator.load(QLocale::system(), "postmachine", ".", "/locales"))
     QApplication::installTranslator(&translator);

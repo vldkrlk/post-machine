@@ -23,6 +23,9 @@ public:
     QString getProblem() const;
     void setProblem(QString problem);
 
+    void saveToFile(QString url) const;
+    void loadFromFile(QString url);
+
    private:
     QString m_problem;
     bool m_is_working = false;

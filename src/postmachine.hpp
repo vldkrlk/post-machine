@@ -31,9 +31,6 @@ class PostMachine {
   void setCommands(const QVector<Command> &commands);
   void setTape(const Tape &tape);
 
-  void saveToFile(QString url) const;
-  void loadFromFile(QString url);
-
  private:
   Status m_status = NoError;
   size_t m_command_index = 0;

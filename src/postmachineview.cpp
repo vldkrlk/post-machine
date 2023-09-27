@@ -69,9 +69,6 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
             tr("Post machine stopped because found a invalid command"));
         break;
     }
-
-    // ui->problem_edit->setText(model.getProblem());
-
     ui->tape_widget->loadFromTape(model.getTape());
 
     ui->tape_widget->setEnabled(!model.isRunning());
@@ -84,19 +81,6 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->stop_button->setEnabled(model.isRunning());
     ui->step_button->setEnabled(!model.isRunning());
     ui->commands_widget->setEnabled(!model.isRunning());
-
-    /*
-    if (model.isRunning()) {
-        ui->status_label->setText(tr("Виконується"));
-    } else {
-        if (model.isError())
-            if (model.getCommandIndex() != 0)
-                ui->status_label->setText(tr("Машина зупинилася через помилку
-    під час виконання")); else ui->status_label->setText(""); else if
-    (model.isEnd()) ui->status_label->setText(tr("Машина зупинилася на команді
-    зупинки")); else ui->status_label->setText(tr("Машина очікує команди"));
-    }
-*/
 
     auto commands = model.getCommands();
 
@@ -203,6 +187,7 @@ void PostMachineView::load_file()
 {
     controller->loadFile(
         QFileDialog::getOpenFileName(this, tr("Open file"), "", "*.post"));
+    ui->problem_edit->setText(controller->getModel()->getProblem());
     loadDataFromModel(*controller->getModel());
 }
 

@@ -30,9 +30,12 @@ Command::Command(QString command, QString jumps, QString comment)
     if (!ok) m_jump1 = kinvalid_jump;
     m_jump2 = vectors[1].toInt(&ok);
     if (!ok) m_jump2 = kinvalid_jump;
-  } else {
+  } else if (m_type != MoveIF) {
     m_jump1 = jumps.toInt(&ok);
     if (!ok) m_jump1 = kinvalid_jump;
+  } else {
+    m_jump1 = kinvalid_jump;
+    m_jump2 = kinvalid_jump;
   }
 }
 
