@@ -218,7 +218,25 @@ void PostMachineView::about()
 
 void PostMachineView::instruction()
 {
-    QMessageBox::about(this, tr("Instruction"), tr("Instruction set"));
+    QMessageBox::about(
+        this, tr("Instruction"),
+        tr("Instruction set:"
+           "1 - writes to cell \n"
+           "0 - erases cell \n"
+           "< - step left \n"
+           "> - step right \n"
+           "? - jumps to first jump point if cell haven`t mark  \n"
+           "else jumps to second jump point \n"
+           "! stops machine \n"
+           "Jump types: \n"
+           "1) \"\" empty jumps moves you to the next command \n"
+           "2) \"1\" jumps to the first command \n"
+           "3) \"3,4\" jump for ? command, if cell is marked  \n"
+           "jumps to 4 else jumps to 3 \n"
+           "Stop types: \n"
+           "1) stop after ! command \n"
+           "2) stop after command ptr goes out from commands \n"
+           "3) stop when program hits on incorrect commmand \n"));
 }
 
 void PostMachineView::timer()

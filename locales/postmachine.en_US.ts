@@ -76,7 +76,7 @@
     <message>
         <location filename="../src/postmachineview.ui" line="347"/>
         <location filename="../src/postmachineview.ui" line="377"/>
-        <location filename="../src/postmachineview.cpp" line="224"/>
+        <location filename="../src/postmachineview.cpp" line="211"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -193,45 +193,45 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="57"/>
-        <location filename="../src/postmachineview.cpp" line="68"/>
+        <location filename="../src/postmachineview.cpp" line="59"/>
+        <location filename="../src/postmachineview.cpp" line="70"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="58"/>
+        <location filename="../src/postmachineview.cpp" line="60"/>
         <source>Post machine stopped because found a command that don`t exist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="63"/>
+        <location filename="../src/postmachineview.cpp" line="65"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="64"/>
+        <location filename="../src/postmachineview.cpp" line="66"/>
         <source>Post machine stopped because found a stop command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="69"/>
+        <location filename="../src/postmachineview.cpp" line="71"/>
         <source>Post machine stopped because found a invalid command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="185"/>
-        <location filename="../src/postmachineview.cpp" line="212"/>
+        <location filename="../src/postmachineview.cpp" line="171"/>
+        <location filename="../src/postmachineview.cpp" line="199"/>
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="192"/>
-        <location filename="../src/postmachineview.cpp" line="205"/>
+        <location filename="../src/postmachineview.cpp" line="178"/>
+        <location filename="../src/postmachineview.cpp" line="191"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="225"/>
+        <location filename="../src/postmachineview.cpp" line="212"/>
         <source>The program is designed for educational purposes, 
 distributed under under the GNU GPL3 license. 
 The author is not responsible for the use of the program. 
@@ -241,17 +241,38 @@ https://github.com/adidvar/PostMachine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="234"/>
+        <location filename="../src/postmachineview.cpp" line="222"/>
         <source>Instruction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="282"/>
+        <location filename="../src/postmachineview.cpp" line="223"/>
+        <source>Instruction set:1 - writes to cell 
+0 - erases cell 
+&lt; - step left 
+&gt; - step right 
+? - jumps to first jump point if cell haven`t mark  
+else jumps to second jump point 
+! stops machine 
+Jump types: 
+1) &quot;&quot; empty jumps moves you to the next command 
+2) &quot;1&quot; jumps to the first command 
+3) &quot;3,4&quot; jump for ? command, if cell is marked  
+jumps to 4 else jumps to 3 
+Stop types: 
+1) stop after ! command 
+2) stop after command ptr goes out from commands 
+3) stop when program hits on incorrect commmand 
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="268"/>
         <source>Custom speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="282"/>
+        <location filename="../src/postmachineview.cpp" line="268"/>
         <source>Enter delay between commands in ms</source>
         <translation type="unfinished"></translation>
     </message>

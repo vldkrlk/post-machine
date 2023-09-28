@@ -29,7 +29,8 @@ void PostMachine::nextStep() {
         m_tape.writeOnHead(1);
         break;
     case Command::MoveIF:
-        jump = m_tape.readOnHead() ? command.getJump1() - 1 : command.getJump2() - 1;
+        jump = m_tape.readOnHead() ? command.getJump2() - 1
+                                   : command.getJump1() - 1;
         break;
     case Command::End:
         m_status = EndCommand;
