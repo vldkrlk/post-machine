@@ -13,6 +13,7 @@ class PostMachine {
     OutOfCommands,
     EndCommand,
     InvalidCommand,
+    OverrideError,
   };
 
   Status getStatus() const;

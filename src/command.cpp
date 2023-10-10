@@ -6,22 +6,7 @@ Command::Command() {}
 
 Command::Command(QString command, QString jumps, QString comment)
     : m_comment(comment) {
-  QChar character = ' ';
-  if (command.simplified().size() > 0) character = command.simplified()[0];
-  if (character == '<')
-    m_type = MoveLeft;
-  else if (character == '>')
-    m_type = MoveRight;
-  else if (character == '0')
-    m_type = WriteZero;
-  else if (character == '1')
-    m_type = WriteOne;
-  else if (character == '?')
-    m_type = MoveIF;
-  else if (character == '!')
-    m_type = End;
-  else
-    m_type = Invalid;
+  m_type = getCommandType(command);
 
   bool ok = false;
   if (jumps.contains(',') && m_type == MoveIF) {
@@ -53,6 +38,41 @@ size_t Command::getJump2() const
 {
     return m_jump2;
 }
+
+Command::Type Command::getCommandType(QString command) {
+  QChar character = ' ';
+  if (command.simplified().size() > 0) character = command.simplified()[0];
+  if (character == '<')
+    return MoveLeft;
+  else if (character == '>')
+    return MoveRight;
+  else if (character == '0')
+    return WriteZero;
+  else if (character == '1')
+    return WriteOne;
+  else if (character == '?')
+    return MoveIF;
+  else if (character == '!')
+    return End;
+  else
+    return Invalid;
+}
+
+bool Command::isCorrectJump(Type m_type, QString jumps) {
+  bool ok = false;
+  if (jumps.contains(',') && m_type == MoveIF) {
+    auto vectors = jumps.split(QString(","));
+    vectors[0].toInt(&ok);
+    if (!ok) return false;
+    vectors[1].toInt(&ok);
+    if (!ok) return false;
+  } else if (m_type != MoveIF) {
+    jumps.toInt(&ok);
+    if (!ok) return false;
+  }
+  return true;
+}
+
 QString Command::getCommand()
 {
     switch (m_type) {

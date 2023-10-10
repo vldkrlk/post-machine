@@ -70,6 +70,11 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
             this, tr("Warning"),
             tr("Post machine stopped because found a invalid command"));
         break;
+      case PostMachine::OverrideError:
+        QMessageBox::warning(
+            this, tr("Warning"),
+            tr("Post machine stopped because tape is overrided"));
+        break;
     }
     ui->tape_widget->loadFromTape(model.getTape());
 
@@ -95,7 +100,8 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
       auto comment_item = new QTableWidgetItem(commands[i].getComment());
       ui->commands_widget->setItem(i, 2, comment_item);
     }
-    ui->commands_widget->selectRow(model.getCommandIndex());
+    if (model.isRunning())
+      ui->commands_widget->selectRow(model.getCommandIndex());
 
     m_editing = false;
 }
@@ -120,6 +126,8 @@ void PostMachineView::on_commands_widget_itemChanged(QTableWidgetItem *item)
     auto command = ui->commands_widget->item(row, 0)->text();
     auto argc = ui->commands_widget->item(row, 1)->text();
     auto comment = ui->commands_widget->item(row, 2)->text();
+
+    // if (item->column() == 0)
 
     controller->commandEntered(row, command, argc, comment);
 
@@ -161,6 +169,7 @@ void PostMachineView::on_step_button_clicked()
 {
     controller->step();
     loadDataFromModel(*controller->getModel());
+    ui->commands_widget->selectRow(controller->getModel()->getCommandIndex());
     if (controller->getModel()->getStatus() != PostMachine::NoError)
       controller->getModel()->reset();
 }

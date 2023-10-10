@@ -16,6 +16,9 @@ public:
     size_t getJump1() const;
     size_t getJump2() const;
 
+    static Type getCommandType(QString command);
+    static bool isCorrectJump(Type type, QString jump);
+
     QString getCommand();
     QString getJumps();
     QString getComment();
