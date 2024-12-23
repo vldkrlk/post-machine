@@ -1,4 +1,4 @@
-# Post Machine Simulation Program
+# Emil Post Machine Simulation Program
 
 ## Overview
 
