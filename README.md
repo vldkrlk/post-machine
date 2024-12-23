@@ -10,9 +10,9 @@ This project is a Post Machine simulation program written in C++ using the Qt li
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Building](#building)
-  - [Running](#running)
+- [Prerequisites](#prerequisites)
+- [Building](#building)
+- [Running](#running)
 - [Usage](#usage)
 - [License](#license)
 
@@ -36,7 +36,7 @@ Before you can build and run the Post Machine simulation program, you will need 
 
 - C++ compiler that supports C++17 or later.
 - Qt development libraries (Qt 6 or later).
-- CMake (version 3.0 or later).
+- CMake (version 3.30 or later).
 
 ### Building
 
@@ -45,13 +45,13 @@ Follow these steps to build the Post Machine simulation program:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/adidvar/PostMachine.git
+   git clone https://github.com/adidvar/post-machine.git
    ```
 
 2. Change to the project directory:
 
    ```bash
-   cd PostMachine 
+   cd post-machine 
    ```
 
 3. Create a build directory:
@@ -64,13 +64,14 @@ Follow these steps to build the Post Machine simulation program:
 4. Generate the build files using CMake:
 
    ```bash
-   cmake ..
+   cmake -S ..
    ```
 
-5. Build the program:
+5. Build and install the program:
 
    ```bash
-   make
+   cmake --build .
+   cmake --install .
    ```
 
 ### Running

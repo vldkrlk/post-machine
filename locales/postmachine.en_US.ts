@@ -76,7 +76,7 @@
     <message>
         <location filename="../src/postmachineview.ui" line="347"/>
         <location filename="../src/postmachineview.ui" line="377"/>
-        <location filename="../src/postmachineview.cpp" line="211"/>
+        <location filename="../src/postmachineview.cpp" line="220"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -195,6 +195,7 @@
     <message>
         <location filename="../src/postmachineview.cpp" line="59"/>
         <location filename="../src/postmachineview.cpp" line="70"/>
+        <location filename="../src/postmachineview.cpp" line="75"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
@@ -219,19 +220,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="171"/>
-        <location filename="../src/postmachineview.cpp" line="199"/>
+        <location filename="../src/postmachineview.cpp" line="76"/>
+        <source>Post machine stopped because tape is overrided</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/postmachineview.cpp" line="180"/>
+        <location filename="../src/postmachineview.cpp" line="208"/>
         <source>Save file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="178"/>
-        <location filename="../src/postmachineview.cpp" line="191"/>
+        <location filename="../src/postmachineview.cpp" line="187"/>
+        <location filename="../src/postmachineview.cpp" line="200"/>
         <source>Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="212"/>
+        <location filename="../src/postmachineview.cpp" line="221"/>
         <source>The program is designed for educational purposes, 
 distributed under under the GNU GPL3 license. 
 The author is not responsible for the use of the program. 
@@ -241,12 +247,12 @@ https://github.com/adidvar/PostMachine</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="222"/>
+        <location filename="../src/postmachineview.cpp" line="231"/>
         <source>Instruction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="223"/>
+        <location filename="../src/postmachineview.cpp" line="232"/>
         <source>Instruction set:1 - writes to cell 
 0 - erases cell 
 &lt; - step left 
@@ -267,12 +273,12 @@ Stop types:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="268"/>
+        <location filename="../src/postmachineview.cpp" line="277"/>
         <source>Custom speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="268"/>
+        <location filename="../src/postmachineview.cpp" line="277"/>
         <source>Enter delay between commands in ms</source>
         <translation type="unfinished"></translation>
     </message>

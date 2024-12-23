@@ -92,6 +92,7 @@ QString Command::getCommand()
         return "";
         break;
     }
+	return "";
 }
 
 QString Command::getJumps()

@@ -1,0 +1,7 @@
+[requires]
+qt/6.7.3
+
+[generators]
+CMakeToolchain
+CMakeDeps
+
