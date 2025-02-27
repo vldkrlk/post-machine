@@ -9,6 +9,14 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_PACKAGE_NAME "post-machine")
+set(CPACK_PACKAGE_VERSION ${CMAKE_PROJECT_VERSION})
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK_PACKAGE_VERSION}")
+set(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_BINARY_DIR}/package")
+
+include(CPack)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets LinguistTools)
 qt_standard_project_setup()
 
@@ -47,7 +55,7 @@ install(TARGETS PostMachine
 )
 
 qt_generate_deploy_app_script(
-    TARGET PostMachine 
+    TARGET PostMachine
     OUTPUT_SCRIPT deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
