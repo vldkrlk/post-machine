@@ -16,21 +16,14 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest, macos-12]
+        os: [macos-latest, macos-12]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Conan
-        id: conan
-        uses: turtlebrowser/get-conan@main
-
-      - name: Configure Conan
-        run: conan profile detect
-
-      - name: Configure Conan
-        run: conan install . --output-folder=build --build=missing
+      - name: Brew insatall qt6
+        run: brew install qt
 
       - name: Build Project
         uses: threeal/cmake-action@v2.1.0
@@ -38,7 +31,5 @@ jobs:
           source-dir: .
           build-dir: build
           options: |
-            BUILD_TESTS=ON
-            BUILD_UCI=ON
             CMAKE_BUILD_TYPE=Release
           build-args: --config Release
