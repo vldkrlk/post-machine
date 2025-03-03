@@ -91,6 +91,7 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK
 
 # --- macOS DMG ---
 if(APPLE)
+    set(CPACK_BUNDLE_PLIST "${CMAKE_SOURCE_DIR}/data/Info.plist")
     set(CPACK_GENERATOR "DragNDrop")
     set(CPACK_DMG_FORMAT "UDBZ")
 endif()
