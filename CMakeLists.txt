@@ -6,13 +6,6 @@ project(postmachine VERSION 0.3.6 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# CPack
-set(CPACK_GENERATOR "TGZ")
-set(CPACK_PACKAGE_NAME "post-machine")
-set(CPACK_PACKAGE_VERSION ${CMAKE_PROJECT_VERSION})
-set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK_PACKAGE_VERSION}")
-set(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_BINARY_DIR}/package")
-
 # QT
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -34,13 +27,25 @@ if (WIN32)
     set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/data/info.rc")
 endif ()
 
-
 # App
 qt_add_executable(${CMAKE_PROJECT_NAME}
                 ${PROJECT_SOURCES}
                 ${APP_ICON_RESOURCE_WINDOWS}
                 data/recources.qrc)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Qt6::Core Qt6::Widgets)
+
+# macOS Bundle
+if(APPLE)
+    set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_BUNDLE_NAME "Post Machine"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.adidvar.postmachine"
+        MACOSX_BUNDLE_BUNDLE_IDENTIFIER "com.adidvar.postmachine"
+    )
+endif()
 
 # Translation
 file(GLOB TRANSLATIONS_FILES
@@ -59,14 +64,13 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
 )
 
 if(LINUX)
-set(CPACK_GENERATOR "TGZ")
-install(FILES ${qm_files} DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}/locales)
-install(FILES ${CMAKE_SOURCE_DIR}/data/postmachine.png DESTINATION ${CMAKE_INSTALL_DATADIR}/pixmaps)
-install(FILES ${CMAKE_SOURCE_DIR}/data/PostMachine.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
-set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
+    install(FILES ${qm_files} DESTINATION ${CMAKE_INSTALL_DATADIR}/${CMAKE_PROJECT_NAME}/locales)
+    install(FILES ${CMAKE_SOURCE_DIR}/data/postmachine.png DESTINATION ${CMAKE_INSTALL_DATADIR}/pixmaps)
+    install(FILES ${CMAKE_SOURCE_DIR}/data/PostMachine.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
 endif()
 
-if (WIN32)
+if (APPLE OR WIN32)
 qt_generate_deploy_app_script(
     TARGET ${CMAKE_PROJECT_NAME}
     OUTPUT_SCRIPT deploy_script
@@ -74,5 +78,42 @@ qt_generate_deploy_app_script(
 )
 install(SCRIPT ${deploy_script})
 endif ()
+
+# CPack
+set(CPACK_PACKAGE_VENDOR "adidvar")
+set(CPACK_PACKAGE_NAME "post-machine")
+set(CPACK_PACKAGE_CONTACT "adidvar@gmail.com")
+set(CPACK_PACKAGE_VERSION ${CMAKE_PROJECT_VERSION})
+set(CPACK_OUTPUT_FILE_PREFIX "${CMAKE_BINARY_DIR}/package")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Post machine - post machine emulator")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK_PACKAGE_VERSION}")
+
+# --- macOS DMG ---
+if(APPLE)
+    set(CPACK_GENERATOR "DragNDrop")
+    set(CPACK_DMG_FORMAT "UDBZ")
+endif()
+
+# --- Debian (DEB) ---
+if(UNIX AND NOT APPLE)
+    list(APPEND CPACK_GENERATOR "DEB")
+    set(CPACK_DEBIAN_PACKAGE_MAINTAINER "adidvar")
+    set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
+    set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.17), libstdc++6 (>= 4.8)")
+    set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+
+endif()
+
+# --- Windows Installer (NSIS) ---
+if(WIN32)
+    list(APPEND CPACK_GENERATOR "NSIS")
+    set(CPACK_NSIS_DISPLAY_NAME "PostMachine")
+    set(CPACK_NSIS_PACKAGE_NAME "PostMachine Installer")
+    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/data/postmachine.ico")
+    set(CPACK_NSIS_CONTACT "adidvar@gmail.com")
+    set(CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+
+endif()
 
 include(CPack)

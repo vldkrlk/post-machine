@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  release:
+    types: [created] # Runs when a new release is created
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Apt install qt6
+        run: sudo apt install qt6-base-dev
+
+      - name: Build Project
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: .
+          build-dir: build
+          options: |
+            CMAKE_BUILD_TYPE=Release
+          build-args: --config Release
+
+      - name: Package with CPack
+        run: |
+          cd build
+          cpack
+
+      - name: Upload Release Artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/package/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

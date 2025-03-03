@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  release:
+    types: [created] # Runs when a new release is created
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        os: [windows-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Conan
+        id: conan
+        uses: turtlebrowser/get-conan@main
+
+      - name: Install deps
+        run: conan profile detect
+
+      - name: Install deps
+        run: conan install .
+
+      - name: Build Project
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: .
+          build-dir: build
+          options: |
+            CMAKE_BUILD_TYPE=Release
+          build-args: --config Release
+
+      - name: Package with CPack
+        run: |
+          cd build
+          cpack
+
+      - name: Upload Release Artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/package/*.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
