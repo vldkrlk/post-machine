@@ -60,6 +60,7 @@ add_dependencies(${CMAKE_PROJECT_NAME} postmachine_lrelease)
 # Deploy
 include(GNUInstallDirs)
 install(TARGETS ${CMAKE_PROJECT_NAME}
+    BUNDLE  DESTINATION .
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 

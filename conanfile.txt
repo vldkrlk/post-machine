@@ -5,3 +5,5 @@ qt/6.7.3
 CMakeToolchain
 CMakeDeps
 
+[settings]
+compiler.cppstd=17
