@@ -7,3 +7,6 @@ CMakeDeps
 
 [layout]
 cmake_layout
+
+[options]
+qt/6.7.3:qttools=True
