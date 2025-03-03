@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Post Machine
+Comment=Post machine emulator
+GenericName=Post Machine
+Icon=postmachine
+Exec=postmachine
+Terminal=false
+Type=Application
+Categories=Education;;
+Keywords=Post;Emulator;
