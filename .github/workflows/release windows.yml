@@ -35,7 +35,8 @@ jobs:
           build-dir: build
           options: |
             CMAKE_BUILD_TYPE=Release
-          args: --preset conan-default --config Release
+          args: --preset conan-default
+          build-args: --config Release
 
       - name: Package with CPack
         run: |
