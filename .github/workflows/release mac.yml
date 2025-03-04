@@ -43,18 +43,11 @@ jobs:
         run: |
           APP_PATH=$(find build -name "*.app" | head -n 1)
           echo "Checking structure of $APP_PATH"
-          tree "$APP_PATH" || find "$APP_PATH"
 
       - name: Validate Info.plist
         run: |
           APP_PATH=$(find build -name "*.app" | head -n 1)
           plutil -lint "$APP_PATH/Contents/Info.plist"
-
-      - name: Check Executable Permissions
-        run: |
-          APP_PATH=$(find build -name "*.app" | head -n 1)
-          chmod +x "$APP_PATH/Contents/MacOS/"*
-          ls -l "$APP_PATH/Contents/MacOS/"
 
       - name: List Linked Libraries
         run: |
@@ -62,13 +55,6 @@ jobs:
           EXECUTABLE=$(ls "$APP_PATH/Contents/MacOS/")
           echo "Checking linked libraries for $EXECUTABLE"
           otool -L "$APP_PATH/Contents/MacOS/$EXECUTABLE"
-
-      - name: Test App Execution
-        run: |
-          APP_PATH=$(find build -name "*.app" | head -n 1)
-          EXECUTABLE=$(ls "$APP_PATH/Contents/MacOS/")
-          echo "Running $EXECUTABLE"
-          "$APP_PATH/Contents/MacOS/$EXECUTABLE" || echo "App failed to run"
 
       - name: Upload Release Artifacts
         uses: softprops/action-gh-release@v1

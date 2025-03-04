@@ -96,7 +96,6 @@ if(APPLE)
     set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
     set(CPACK_BUNDLE_NAME "PostMachine")
     set(CPACK_BUNDLE_ICON "${CMAKE_SOURCE_DIR}/data/postmachine.icns")
-    set(CPACK_BUNDLE_PLIST "${CMAKE_SOURCE_DIR}/data/Info.plist")
 
 endif()
 
