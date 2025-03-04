@@ -91,25 +91,32 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK
 
 # --- macOS DMG ---
 if(APPLE)
+   set(CPACK_GENERATOR "Bundle")
+    set(CPACK_PACKAGE_NAME "PostMachine")
+    set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+    set(CPACK_BUNDLE_NAME "PostMachine")
     set(CPACK_BUNDLE_PLIST "${CMAKE_SOURCE_DIR}/data/Info.plist")
-    set(CPACK_GENERATOR "DragNDrop")
-    set(CPACK_DMG_FORMAT "UDBZ")
 endif()
 
 # --- Debian (DEB) ---
 if(UNIX AND NOT APPLE)
-    list(APPEND CPACK_GENERATOR "DEB")
+    list(APPEND CPACK_GENERATOR "DEB;RPM")
     set(CPACK_DEBIAN_PACKAGE_MAINTAINER "adidvar")
     set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
     set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-    set(CPACK_DEBIAN_PACKAGE_DEPENDS "libc6 (>= 2.17), libstdc++6 (>= 4.8)")
+    set(CPACK_DEBIAN_PACKAGE_DEPENDS "qt-base (>= 6.0.0)")
     set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
+
+    set(CPACK_RPM_PACKAGE_LICENSE "GPL-3")
+    set(CPACK_RPM_PACKAGE_SUMMARY "Post Machine")
+    set(CPACK_RPM_PACKAGE_DESCRIPTION "Post machine emulator")
+    set(CPACK_RPM_PACKAGE_REQUIRES "qt >= 6.0.0")
 
 endif()
 
 # --- Windows Installer (NSIS) ---
 if(WIN32)
-    list(APPEND CPACK_GENERATOR "NSIS")
+    list(APPEND CPACK_GENERATOR "NSIS;ZIP")
     set(CPACK_NSIS_DISPLAY_NAME "PostMachine")
     set(CPACK_NSIS_PACKAGE_NAME "PostMachine Installer")
     set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/data/postmachine.ico")
