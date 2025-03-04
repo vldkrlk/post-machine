@@ -72,12 +72,12 @@ if(LINUX)
 endif()
 
 if (APPLE OR WIN32)
-qt_generate_deploy_app_script(
+    qt_generate_deploy_app_script(
     TARGET ${CMAKE_PROJECT_NAME}
     OUTPUT_SCRIPT deploy_script
     NO_UNSUPPORTED_PLATFORM_ERROR
 )
-install(SCRIPT ${deploy_script})
+    install(SCRIPT ${deploy_script})
 endif ()
 
 # CPack
@@ -91,11 +91,13 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CMAKE_SYSTEM_NAME}-v${CPACK
 
 # --- macOS DMG ---
 if(APPLE)
-   set(CPACK_GENERATOR "Bundle")
+    set(CPACK_GENERATOR "Bundle")
     set(CPACK_PACKAGE_NAME "PostMachine")
     set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
     set(CPACK_BUNDLE_NAME "PostMachine")
+    set(CPACK_BUNDLE_ICON "${CMAKE_SOURCE_DIR}/data/postmachine.icns")
     set(CPACK_BUNDLE_PLIST "${CMAKE_SOURCE_DIR}/data/Info.plist")
+
 endif()
 
 # --- Debian (DEB) ---
