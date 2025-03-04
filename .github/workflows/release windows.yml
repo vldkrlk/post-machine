@@ -33,12 +33,6 @@ jobs:
           set-env: "true"
           tools-only: "false"
 
-      - name: Install deps
-        run: conan profile detect
-
-      - name: Install deps
-        run: conan install . --build=missing -s compiler.cppstd=17
-
       - name: Build Project
         uses: threeal/cmake-action@v2.1.0
         with:
