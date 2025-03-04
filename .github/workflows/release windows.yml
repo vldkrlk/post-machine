@@ -49,7 +49,7 @@ jobs:
           cpack
 
       - name: List files in build/package
-        run: dir build\package\ /s
+        run: dir build\package\
 
       - name: Upload Release Artifacts
         uses: softprops/action-gh-release@v1
