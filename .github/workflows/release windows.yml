@@ -48,6 +48,9 @@ jobs:
           cd build
           cpack
 
+      - name: List files in build/package
+        run: dir build\package\ /s
+
       - name: Upload Release Artifacts
         uses: softprops/action-gh-release@v1
         with:
