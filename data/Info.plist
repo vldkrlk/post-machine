@@ -17,7 +17,7 @@
     <string>postmachine.icns</string>
 
     <key>CFBundleExecutable</key>
-    <string>PostMachine</string>
+    <string>postmachine</string>
 
     <key>LSMinimumSystemVersion</key>
     <string>10.13.0</string>
