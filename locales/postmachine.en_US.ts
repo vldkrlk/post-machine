@@ -24,171 +24,171 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="96"/>
+        <location filename="../src/postmachineview.ui" line="93"/>
         <source>Problem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="158"/>
+        <location filename="../src/postmachineview.ui" line="155"/>
         <source>&lt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="199"/>
+        <location filename="../src/postmachineview.ui" line="196"/>
         <source>&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="225"/>
+        <location filename="../src/postmachineview.ui" line="222"/>
         <source>+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="238"/>
+        <location filename="../src/postmachineview.ui" line="235"/>
         <source>-</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="297"/>
+        <location filename="../src/postmachineview.ui" line="294"/>
         <source>Command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="302"/>
+        <location filename="../src/postmachineview.ui" line="299"/>
         <source>Jump</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="307"/>
+        <location filename="../src/postmachineview.ui" line="304"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="329"/>
+        <location filename="../src/postmachineview.ui" line="326"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="340"/>
+        <location filename="../src/postmachineview.ui" line="337"/>
         <source>Tape</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="347"/>
-        <location filename="../src/postmachineview.ui" line="377"/>
+        <location filename="../src/postmachineview.ui" line="344"/>
+        <location filename="../src/postmachineview.ui" line="374"/>
         <location filename="../src/postmachineview.cpp" line="220"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="354"/>
+        <location filename="../src/postmachineview.ui" line="351"/>
         <source>Speed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="369"/>
+        <location filename="../src/postmachineview.ui" line="366"/>
         <source>Guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="372"/>
+        <location filename="../src/postmachineview.ui" line="369"/>
         <source>G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="380"/>
+        <location filename="../src/postmachineview.ui" line="377"/>
         <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="385"/>
-        <location filename="../src/postmachineview.ui" line="401"/>
+        <location filename="../src/postmachineview.ui" line="382"/>
+        <location filename="../src/postmachineview.ui" line="398"/>
         <source>Load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="388"/>
+        <location filename="../src/postmachineview.ui" line="385"/>
         <source>Ctrl+Alt+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="393"/>
-        <location filename="../src/postmachineview.ui" line="409"/>
+        <location filename="../src/postmachineview.ui" line="390"/>
+        <location filename="../src/postmachineview.ui" line="406"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="396"/>
+        <location filename="../src/postmachineview.ui" line="393"/>
         <source>Ctrl+Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="404"/>
+        <location filename="../src/postmachineview.ui" line="401"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="412"/>
+        <location filename="../src/postmachineview.ui" line="409"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="417"/>
+        <location filename="../src/postmachineview.ui" line="414"/>
         <source>Quit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="420"/>
+        <location filename="../src/postmachineview.ui" line="417"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="425"/>
+        <location filename="../src/postmachineview.ui" line="422"/>
         <source>Fast</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="428"/>
+        <location filename="../src/postmachineview.ui" line="425"/>
         <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="433"/>
+        <location filename="../src/postmachineview.ui" line="430"/>
         <source>Normal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="436"/>
+        <location filename="../src/postmachineview.ui" line="433"/>
         <source>N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="441"/>
+        <location filename="../src/postmachineview.ui" line="438"/>
         <source>Slow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="444"/>
+        <location filename="../src/postmachineview.ui" line="441"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="449"/>
+        <location filename="../src/postmachineview.ui" line="446"/>
         <source>Custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="452"/>
+        <location filename="../src/postmachineview.ui" line="449"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="457"/>
+        <location filename="../src/postmachineview.ui" line="454"/>
         <source>New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.ui" line="460"/>
+        <location filename="../src/postmachineview.ui" line="457"/>
         <source>Ctrl+N</source>
         <translation type="unfinished"></translation>
     </message>
