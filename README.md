@@ -1,11 +1,9 @@
 # Emil Post Machine Simulation Program
 
 ![GitHub license](https://img.shields.io/github/license/adidvar/post-machine)
-![GitHub stars](https://img.shields.io/github/stars/adidvar/post-machine?style=social)
-![GitHub forks](https://img.shields.io/github/forks/adidvar/post-machine?style=social)
+![GitHub stars](https://img.shields.io/github/stars/adidvar/post-machine)
+![GitHub forks](https://img.shields.io/github/forks/adidvar/post-machine)
 ![GitHub issues](https://img.shields.io/github/issues/adidvar/post-machine)
-![GitHub last commit](https://img.shields.io/github/last-commit/adidvar/post-machine)
-
 [![CI](https://github.com/adidvar/post-machine/actions/workflows/build.yml/badge.svg)](https://github.com/your-username/your-repo/actions)
 
 ## Overview
