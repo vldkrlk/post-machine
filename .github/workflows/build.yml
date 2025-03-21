@@ -1,0 +1,70 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: sudo apt install qt6-base-dev qt6-tools-dev
+      - name: Build Project
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: .
+          build-dir: build
+          options: |
+            CMAKE_BUILD_TYPE=Release
+          build-args: --config Release
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: brew install qt
+      - name: Build Project
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: .
+          build-dir: build
+          options: |
+            CMAKE_BUILD_TYPE=Release
+          build-args: --config Release
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8"
+          host: "windows"
+          target: "desktop"
+          arch: "win64_msvc2022_64"
+          dir: "${{ github.workspace }}/example/"
+          install-deps: "true"
+          cache: "true"
+          cache-key-prefix: "install-qt-action"
+          setup-python: "true"
+          set-env: "true"
+          tools-only: "false"
+          tools: "tools_cmake tools_ifw tools_qtcreator,qt.tools.qtcreator"
+      - name: Build Project
+        uses: threeal/cmake-action@v2.1.0
+        with:
+          source-dir: .
+          build-dir: build
+          options: |
+            CMAKE_BUILD_TYPE=Release
+          build-args: --config Release
