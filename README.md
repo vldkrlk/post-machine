@@ -1,5 +1,13 @@
 # Emil Post Machine Simulation Program
 
+![GitHub license](https://img.shields.io/github/license/adidvar/post-machine)
+![GitHub stars](https://img.shields.io/github/stars/adidvar/post-machine?style=social)
+![GitHub forks](https://img.shields.io/github/forks/adidvar/post-machine?style=social)
+![GitHub issues](https://img.shields.io/github/issues/adidvar/post-machine)
+![GitHub last commit](https://img.shields.io/github/last-commit/adidvar/post-machine)
+
+[![CI](https://github.com/adidvar/post-machine/actions/workflows/build.yml/badge.svg)](https://github.com/your-username/your-repo/actions)
+
 ## Overview
 
 This project is a Post Machine simulation program written in C++ using the Qt library. The program is designed to simulate the operation of a Post Machine, a theoretical computational model proposed by Emil Post in the 1930s. It is distributed under the terms of the GNU General Public License, version 3 (GPL-3.0).
@@ -58,4 +66,3 @@ Contributions are welcome! If you find a bug, have an idea for an improvement, o
 ## License
 
 This project is licensed under the GNU General Public License, version 3 (GPL-3.0). See the [LICENSE](LICENSE) file for details.
-
