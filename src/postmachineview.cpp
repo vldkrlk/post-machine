@@ -11,7 +11,7 @@
 #include "postmachinecontroller.hpp"
 #include "postmachinemodel.hpp"
 
-const QStringList locations_dirs = {"../translations", ".",
+const QStringList locations_dirs = {"share/postmachine/locales", ".",
                                     "/usr/share/postmachine/locales"};
 
 PostMachineView::PostMachineView(PostMachineController *controller, QWidget *parent)
@@ -29,8 +29,6 @@ PostMachineView::PostMachineView(PostMachineController *controller, QWidget *par
       if (translator.data()->load(settings.value("language").toString()))
         QApplication::installTranslator(translator.data());
     }
-
-    QApplication::setWindowIcon(QIcon("/usr/share/pixmaps/postmachine.png"));
 
     m_timer->setSingleShot(true);
     ui->commands_widget->setSelectionBehavior(QAbstractItemView::SelectRows);
