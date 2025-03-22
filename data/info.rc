@@ -11,10 +11,10 @@ IDI_ICON1               ICON    DISCARDABLE     "postmachine.ico"
         {
             VALUE "CompanyName",        "\0"
             VALUE "FileDescription",    "Post machine simulator\0"
-            VALUE "FileVersion",        "0.3.6.0\0"
+            VALUE "FileVersion",        "0.3.8.0\0"
             VALUE "OriginalFilename",   "PostMachine.exe\0"
             VALUE "ProductName",        "PostMachine\0"
-            VALUE "ProductVersion",     "0.3.6.0\0"
+            VALUE "ProductVersion",     "0.3.8.0\0"
         }
     }
     BLOCK "VarFileInfo"

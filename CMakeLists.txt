@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 
-project(postmachine VERSION 0.3.6 LANGUAGES CXX)
+project(postmachine VERSION 0.3.8 LANGUAGES CXX)
 
 # C++
 set(CMAKE_CXX_STANDARD 17)
