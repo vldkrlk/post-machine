@@ -38,6 +38,7 @@ private slots:
     void on_run_button_clicked();
     void on_stop_button_clicked();
     void on_step_button_clicked();
+    void on_reset_button_clicked();
 
     void save_tape();
     void load_tape();

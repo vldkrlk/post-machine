@@ -88,6 +88,7 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->stop_button->setEnabled(model.isRunning());
     ui->step_button->setEnabled(!model.isRunning());
     ui->commands_widget->setEnabled(!model.isRunning());
+    ui->reset_button->setEnabled(!model.isRunning());
 
     auto commands = model.getCommands();
 
@@ -172,6 +173,11 @@ void PostMachineView::on_step_button_clicked()
     ui->commands_widget->selectRow(controller->getModel()->getCommandIndex());
     if (controller->getModel()->getStatus() != PostMachine::NoError)
       controller->getModel()->reset();
+}
+
+void PostMachineView::on_reset_button_clicked()
+{
+    controller->reset();
 }
 
 void PostMachineView::save_tape()
