@@ -319,3 +319,5 @@ void PostMachineView::changeEvent(QEvent *event) {
     this->show();
   }
 }
+
+void PostMachineView::on_reset_button_clicked() {}
