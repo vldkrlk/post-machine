@@ -320,4 +320,7 @@ void PostMachineView::changeEvent(QEvent *event) {
   }
 }
 
-void PostMachineView::on_reset_button_clicked() {}
+void PostMachineView::on_reset_button_clicked() {
+  controller->reset();
+  loadDataFromModel(*controller->getModel());
+}
