@@ -103,6 +103,7 @@ void PostMachineView::loadDataFromModel(const PostMachineModel &model)
     ui->stop_button->setEnabled(model.isRunning());
     ui->step_button->setEnabled(!model.isRunning());
     ui->commands_widget->setEnabled(!model.isRunning());
+    ui->reset_button->setEnabled(!model.isRunning());
 
     auto commands = model.getCommands();
 

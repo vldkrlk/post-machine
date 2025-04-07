@@ -76,7 +76,7 @@
     <message>
         <location filename="../src/postmachineview.ui" line="360"/>
         <location filename="../src/postmachineview.ui" line="398"/>
-        <location filename="../src/postmachineview.cpp" line="235"/>
+        <location filename="../src/postmachineview.cpp" line="236"/>
         <source>About</source>
         <translation></translation>
     </message>
@@ -245,19 +245,19 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="195"/>
-        <location filename="../src/postmachineview.cpp" line="223"/>
+        <location filename="../src/postmachineview.cpp" line="196"/>
+        <location filename="../src/postmachineview.cpp" line="224"/>
         <source>Save file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="202"/>
-        <location filename="../src/postmachineview.cpp" line="215"/>
+        <location filename="../src/postmachineview.cpp" line="203"/>
+        <location filename="../src/postmachineview.cpp" line="216"/>
         <source>Open file</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="236"/>
+        <location filename="../src/postmachineview.cpp" line="237"/>
         <source>The program is designed for educational purposes, 
 distributed under under the GNU GPL3 license. 
 The author is not responsible for the use of the program. 
@@ -267,28 +267,28 @@ https://github.com/adidvar/post-machine</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="275"/>
+        <location filename="../src/postmachineview.cpp" line="276"/>
         <source>Custom speed</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="275"/>
+        <location filename="../src/postmachineview.cpp" line="276"/>
         <source>Enter delay between commands in ms</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="290"/>
-        <location filename="../src/postmachineview.cpp" line="307"/>
+        <location filename="../src/postmachineview.cpp" line="291"/>
+        <location filename="../src/postmachineview.cpp" line="308"/>
         <source>default</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="302"/>
+        <location filename="../src/postmachineview.cpp" line="303"/>
         <source>Choose your language</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/postmachineview.cpp" line="303"/>
+        <location filename="../src/postmachineview.cpp" line="304"/>
         <source>Language:</source>
         <translation></translation>
     </message>
